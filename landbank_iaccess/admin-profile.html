@@ -1,0 +1,229 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="images/landbank-logo-icon.png">
+  <title>My Profile | LANDBANK iAccess Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="admin-style.css">
+</head>
+<body class="page-profile">
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+      <div class="sidebar-header">
+        <svg class="sidebar-logo" viewBox="0 0 66 66" aria-hidden="true">
+          <circle cx="33" cy="33" r="30" fill="#fff"/>
+          <path d="M33 10c8 7 12 15 8 24-2 5-5 8-8 12-3-4-6-7-8-12-4-9 0-17 8-24z" fill="#026D3D"/>
+          <path d="M12 40c8-2 14 2 21 10M54 40c-8-2-14 2-21 10" stroke="#026D3D" stroke-width="3" fill="none"/>
+          <path d="M33 26v26" stroke="#fff" stroke-width="2"/>
+        </svg>
+        <div class="sidebar-brand">
+          <span class="sidebar-brand-name">LANDBANK</span>
+          <div class="sidebar-brand-meta">
+            <span class="sidebar-badge">iAccess</span>
+            <span class="sidebar-role">ADMIN</span>
+          </div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <a href="admin-dashboard.html" class="nav-link">
+            <span class="nav-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z M9 22V12h6v10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="nav-label">Dashboard</span>
+          </a>
+        </div>
+        <div class="nav-section">
+          <a href="admin-users.html" class="nav-link">
+            <span class="nav-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M4 17c0-3 2.5-5 6-5s6 2 6 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+            <span class="nav-label">Users</span>
+          </a>
+        </div>
+        <div class="nav-section">
+          <a href="admin-transactions.html" class="nav-link">
+            <span class="nav-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 6h14M3 10h14M3 14h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M14 12l3 2-3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="nav-label">All Transactions</span>
+          </a>
+        </div>
+        <div class="nav-section">
+          <a href="admin-gateway.html" class="nav-link">
+            <span class="nav-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 8h16" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="12" r="1" fill="currentColor"/></svg></span>
+            <span class="nav-label">Gateway</span>
+          </a>
+        </div>
+        <div class="nav-section">
+          <a href="admin-security.html" class="nav-link">
+            <span class="nav-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l7 3v5c0 4-3 7-7 8-4-1-7-4-7-8V5l7-3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M7.5 10l2 2 3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="nav-label">Security</span>
+          </a>
+        </div>
+        <div class="nav-section">
+          <a href="admin-settings.html" class="nav-link">
+            <span class="nav-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M 8.66 1.1 L 11.34 1.1 L 11.78 3.64 L 13.24 4.25 L 15.35 2.76 L 17.24 4.65 L 15.75 6.76 L 16.36 8.22 L 18.9 8.66 L 18.9 11.34 L 16.36 11.78 L 15.75 13.24 L 17.24 15.35 L 15.35 17.24 L 13.24 15.75 L 11.78 16.36 L 11.34 18.9 L 8.66 18.9 L 8.22 16.36 L 6.76 15.75 L 4.65 17.24 L 2.76 15.35 L 4.25 13.24 L 3.64 11.78 L 1.1 11.34 L 1.1 8.66 L 3.64 8.22 L 4.25 6.76 L 2.76 4.65 L 4.65 2.76 L 6.76 4.25 L 8.22 3.64 Z" stroke="currentColor" stroke-width="1.35" stroke-linejoin="round"/><circle cx="10" cy="10" r="3.2" stroke="currentColor" stroke-width="1.35"/><circle cx="10" cy="10" r="1.55" stroke="currentColor" stroke-width="1.35"/></svg></span>
+            <span class="nav-label">Settings</span>
+          </a>
+        </div>
+      </nav>
+      <div class="sidebar-footer">
+        <button type="button" class="sidebar-collapse-btn" id="sidebarCollapseBtn" aria-expanded="true" aria-label="Collapse sidebar">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11 4l-5 5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="collapse-label">Collapse</span>
+        </button>
+      </div>
+    </aside>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="main-wrapper">
+      <header class="header">
+        <button type="button" class="header-menu-btn" id="headerMenuBtn" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="header-actions">
+          <div class="dropdown">
+            <button type="button" class="header-btn" id="notifBtn" aria-label="Notifications" aria-expanded="false" aria-haspopup="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2a5 5 0 00-5 5v3.5l-1.5 2.5h13L15 10.5V7a5 5 0 00-5-5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 15a2 2 0 004 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span class="notif-badge hidden" id="notifBadge">0</span>
+            </button>
+            <div class="dropdown-menu notif-panel" id="notifMenu" role="menu">
+              <div class="notif-panel-header"><span>Notifications</span><button type="button" class="btn btn-ghost btn-sm" id="markAllReadBtn">Mark all read</button></div>
+              <div id="notifList"></div>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button type="button" class="profile-btn" id="profileBtn" aria-expanded="false" aria-haspopup="true">
+              <span class="profile-avatar" id="headerAvatar">SA</span>
+              <span class="profile-name" id="headerName">System Administrator</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 5.25L7 8.75l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="dropdown-menu" id="profileMenu" role="menu">
+              <button type="button" class="dropdown-item" role="menuitem">My Profile</button>
+              <div class="dropdown-divider"></div>
+              <button type="button" class="dropdown-item danger" id="signOutBtn" role="menuitem">Sign out</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="maintenance-banner" id="maintenanceBanner">Maintenance active <span id="maintenanceEndTime">—</span></div>
+      <div class="outage-banner" id="outageBanner">InstaPay is down. Transfers are using fallback routing. <a href="admin-gateway.html" class="btn btn-sm btn-secondary" style="margin-left:8px;">View status</a></div>
+
+      <main class="page-content">
+        <h1 class="page-title">My Profile</h1>
+
+        <!-- Profile hero -->
+        <div class="card profile-hero">
+          <div class="profile-hero-avatar" id="profileAvatar">SA</div>
+          <div class="profile-hero-info">
+            <h2 class="profile-hero-name" id="profileDisplayName">System Administrator</h2>
+            <p class="profile-hero-role" id="profileDisplayRole">System Administrator</p>
+            <p class="profile-hero-meta"><span id="profileDisplayEmail">admin@landbank.gov.ph</span> · Last login <span id="profileLastLogin">just now</span></p>
+          </div>
+        </div>
+
+        <div class="profile-grid">
+          <!-- Personal information -->
+          <div class="card">
+            <div class="panel-header">
+              <h2 class="card-title">Personal information</h2>
+              <div class="panel-actions">
+                <button type="button" class="btn btn-secondary btn-sm" id="editInfoBtn">Edit</button>
+                <button type="button" class="btn btn-ghost btn-sm hidden" id="cancelInfoBtn">Cancel</button>
+                <button type="button" class="btn btn-primary btn-sm hidden" id="saveInfoBtn">Save changes</button>
+              </div>
+            </div>
+            <form id="infoForm" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="profFirstName">First name</label>
+                  <input type="text" class="form-input" id="profFirstName" disabled maxlength="50">
+                  <div class="form-error" id="profFirstNameError"></div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="profLastName">Last name</label>
+                  <input type="text" class="form-input" id="profLastName" disabled maxlength="50">
+                  <div class="form-error" id="profLastNameError"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="profEmail">Email</label>
+                <input type="email" class="form-input" id="profEmail" disabled>
+                <div class="form-error" id="profEmailError"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="profMobile">Mobile</label>
+                <input type="text" class="form-input" id="profMobile" disabled placeholder="+63 9XX XXX XXXX">
+                <div class="form-error" id="profMobileError"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="profRole">Role</label>
+                <input type="text" class="form-input" id="profRole" disabled>
+              </div>
+            </form>
+          </div>
+
+          <!-- Security -->
+          <div class="card">
+            <div class="panel-header">
+              <h2 class="card-title">Security</h2>
+            </div>
+            <form id="passwordForm" novalidate>
+              <div class="form-group">
+                <label class="form-label" for="currentPassword">Current password <span class="required">*</span></label>
+                <div class="password-wrap">
+              <input type="password" class="form-input" id="currentPassword" autocomplete="current-password">
+              <button type="button" class="password-toggle" aria-label="Show password">
+                <img src="images/admin-eye-off.png" alt="" class="eye-icon" width="20" height="20">
+              </button>
+            </div>
+                <div class="form-error" id="currentPasswordError"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="newPassword">New password <span class="required">*</span></label>
+                <div class="password-wrap">
+              <input type="password" class="form-input" id="newPassword" autocomplete="new-password">
+              <button type="button" class="password-toggle" aria-label="Show password">
+                <img src="images/admin-eye-off.png" alt="" class="eye-icon" width="20" height="20">
+              </button>
+            </div>
+                <div class="form-hint">At least 8 characters</div>
+                <div class="form-error" id="newPasswordError"></div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="confirmPassword">Confirm new password <span class="required">*</span></label>
+                <div class="password-wrap">
+              <input type="password" class="form-input" id="confirmPassword" autocomplete="new-password">
+              <button type="button" class="password-toggle" aria-label="Show password">
+                <img src="images/admin-eye-off.png" alt="" class="eye-icon" width="20" height="20">
+              </button>
+            </div>
+                <div class="form-error" id="confirmPasswordError"></div>
+              </div>
+              <button type="button" class="btn btn-primary" id="changePasswordBtn">Change password</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Session info -->
+        <div class="card profile-session">
+          <h2 class="card-title" style="margin-bottom:16px;">Session</h2>
+          <div class="session-row"><span class="session-label">Employee ID</span><span class="session-value" id="profEmployeeId">EMP-0001</span></div>
+          <div class="session-row"><span class="session-label">Department</span><span class="session-value" id="profDepartment">Digital Banking Operations</span></div>
+          <div class="session-row"><span class="session-label">Branch</span><span class="session-value" id="profBranch">Head Office – Malate</span></div>
+          <div class="session-row"><span class="session-label">Account created</span><span class="session-value" id="profCreated">Jan 15, 2024</span></div>
+          <div class="session-row"><span class="session-label">Last login</span><span class="session-value" id="profSessionLogin">—</span></div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  
+  <script src="admin-script.js"></script>
+</body>
+</html>

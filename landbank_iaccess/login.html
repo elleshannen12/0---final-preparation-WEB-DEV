@@ -1,0 +1,330 @@
+
+
+
+<!-- LANDBANK iAccess login page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In | LANDBANK iAccess</title>
+  
+  <link rel="stylesheet" href="style.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <link rel="icon" type="image/png" href="images/landbank-logo-icon.png">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<!-- login-page class enables login layout and scripts -->
+<body class="login-page">
+  
+  
+<!-- Fixed site header -->
+<header class="main-header">
+  <div class="header-top">
+    <div class="header-left">
+        
+        <a href="homepage.html" class="logo-link">
+        <img src="images/landbank-text-logo.png" alt="LANDBANK" class="landbank-text-logo">
+      </a>
+      <span class="header-divider">|</span>
+      
+      <img src="images/overseas-filipino-bank-logo.png" alt="Overseas Filipino Bank" class="ofb-logo">
+    </div>
+    <div class="header-right">
+      
+      <img src="images/iaccess-lock-logo.png" alt="iAccess" class="iaccess-logo">
+    </div>
+  </div>
+</header>
+
+  
+  
+  <!-- Mobile menu (shared markup) -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+  <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="#">About Us</a>
+    <a href="#">FAQs</a>
+    <a href="#">Security Policy</a>
+    <a href="#">Data Privacy Statement</a>
+    <a href="#">Advisory on ATM Use</a>
+    <a href="#">iAccess Features</a>
+    <a href="#">Find Us</a>
+  </nav>
+
+  
+  
+  <!-- Login card -->
+  <main class="login-main">
+    
+    <div class="login-card" role="form" aria-labelledby="loginHeading">
+      
+      <!-- Shown once after registration submit -->
+      <div class="login-pending-banner" id="pendingActivationBanner" role="status" hidden>
+        Registration submitted! Your account is currently pending activation. You will receive an email once your account is approved and ready for login.
+      </div>
+      
+      <a href="homepage.html" class="login-back" id="backLink">
+        <span class="back-arrow" aria-hidden="true">‹</span> Back
+      </a>
+
+      
+      <div class="login-header">
+        <div class="login-lock-badge">
+          <img src="images/login-lock-icon.png" alt="" class="login-lock-img" width="48" height="48">
+        </div>
+        <div class="login-header-text">
+          <h1 id="loginHeading">Login</h1>
+          <p>Enter your details below</p>
+        </div>
+      </div>
+
+      
+      
+      <!-- Form-level error / success messages -->
+      <div class="login-alert" id="loginAlert" role="alert" hidden></div>
+
+      
+      <!-- Custom JS validation (browser HTML5 validation off) -->
+      <form id="loginForm" novalidate>
+        
+        <div class="form-group" id="usernameGroup">
+          <div class="input-wrapper">
+            
+            <img src="images/login-user-icon.png" alt="" class="input-prefix-icon" width="20" height="20">
+            <div class="input-inner">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Enter your username"
+                autocomplete="username"
+                autocapitalize="off"
+                spellcheck="false"
+                required
+                minlength="3"
+                maxlength="40"
+              >
+            </div>
+          </div>
+          
+          <p class="field-error" id="usernameError" hidden></p>
+        </div>
+
+        
+        <div class="form-group" id="passwordGroup">
+          <div class="input-wrapper">
+            <img src="images/login-password-icon.png" alt="" class="input-prefix-icon" width="20" height="20">
+            <div class="input-inner">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+                minlength="7"
+                maxlength="64"
+              >
+            </div>
+            
+            <!-- Show / hide password -->
+            <button type="button" class="eye-toggle" id="eyeToggle" aria-label="Show password" aria-pressed="false">
+              <img src="images/login-eye-off.png" alt="" id="eyeIcon" width="22" height="22">
+            </button>
+          </div>
+          <p class="field-error" id="passwordError" hidden></p>
+        </div>
+
+        
+        <p class="terms-text">
+          By logging in, you agree to our
+          <a href="#" id="termsLink">Terms and Conditions</a>.
+        </p>
+
+        
+        <button type="submit" class="btn-login-primary" id="loginSubmitBtn">
+          LOGIN <span class="btn-arrow" aria-hidden="true">→</span>
+        </button>
+
+        
+        <a href="registration.html" class="btn-signup-secondary" id="signupBtn">
+          SIGN UP
+        </a>
+      </form>
+
+      
+      <!-- Account recovery actions -->
+      <div class="login-card-footer">
+        
+        <button type="button" class="recovery-link" id="unlockIdBtn">
+          <img src="images/login-unlock-id-icon.png" alt="" width="18" height="18">
+          Unlock ID
+        </button>
+        <span class="recovery-divider" aria-hidden="true"></span>
+        
+        <button type="button" class="recovery-link" id="forgotPasswordBtn">
+          <img src="images/login-key-icon.png" alt="" width="18" height="18">
+          Forgot Password
+        </button>
+      </div>
+    </div>
+  </main>
+
+  
+  <!-- Terms summary modal -->
+  <div class="modal-overlay" id="termsModal" role="dialog" aria-modal="true" aria-labelledby="termsModalTitle">
+    <div class="modal tc-modal">
+      <div class="tc-modal-header">
+        <div class="tc-title-row">
+          <img src="images/tc-logo-icon.png" alt="" class="tc-logo-icon" width="40" height="40">
+          <h2 id="termsModalTitle">Terms and conditions</h2>
+        </div>
+        
+        <button type="button" class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+      </div>
+      <div class="tc-modal-body">
+        <section class="tc-section">
+          <h3>Accessibility &amp; Security</h3>
+          <p>Three wrong password attempts locks your ID. Inactive sessions auto-log-out. Service may be unavailable during maintenance.</p>
+        </section>
+        <section class="tc-section">
+          <h3>Your responsibilities</h3>
+          <p>Keep your ID, password and OTP confidential. Report unauthorized activity within 20 days. Maintain sufficient balance for scheduled transactions.</p>
+        </section>
+        <section class="tc-section">
+          <h3>Bank's rights</h3>
+          <p>We may suspend access, decline transactions, or update fees and terms with notice. Continued use means you accept updates.</p>
+        </section>
+        <section class="tc-section">
+          <h3>Data privacy</h3>
+          <p>Your data is processed per the Data Privacy Act and may be shared with service providers, partners, or regulators as required by law. You may withdraw consent, though this may limit service.</p>
+        </section>
+      </div>
+      <div class="modal-footer tc-modal-footer">
+        
+        <a href="terms-and-conditions.html?from=login" class="tc-full-link" target="_blank" rel="opener">
+          <img src="images/tc-link-icon.png" alt="" width="16" height="16">
+          Read the full Terms and Conditions
+        </a>
+        <button type="button" class="btn-tc-continue" id="modalCloseBtn">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- Unlock ID (OTP prototype) -->
+  <div class="modal-overlay" id="unlockModal" role="dialog" aria-modal="true" aria-labelledby="unlockModalTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="unlockModalTitle">Unlock ID</h2>
+        <button type="button" class="modal-close" id="unlockModalClose" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">Enter your User ID and registered email or mobile number. An OTP will be sent for verification.</p>
+        <div class="form-group">
+          <label for="unlockUserId">User ID <span class="req">*</span></label>
+          <input type="text" id="unlockUserId" class="modal-input" autocomplete="username" aria-describedby="unlockUserIdError">
+          <p class="field-error" id="unlockUserIdError" hidden></p>
+        </div>
+        <div class="form-group">
+          <label for="unlockContact">Registered Email / Mobile <span class="req">*</span></label>
+          <input type="text" id="unlockContact" class="modal-input" autocomplete="email" aria-describedby="unlockContactError">
+          <p class="field-error" id="unlockContactError" hidden></p>
+        </div>
+        <div class="form-group" id="unlockOtpGroup" hidden>
+          <label for="unlockOtp">One-Time PIN <span class="req">*</span></label>
+          <input type="text" id="unlockOtp" class="modal-input" maxlength="6" inputmode="numeric" autocomplete="one-time-code" aria-describedby="unlockOtpError">
+          <p class="field-error" id="unlockOtpError" hidden></p>
+        </div>
+        <p class="field-error" id="unlockError" hidden></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-modal-secondary" id="unlockModalCloseBtn">Cancel</button>
+        <button type="button" class="btn-modal-primary" id="unlockSubmitBtn">Request OTP</button>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- Forgot password (prototype) -->
+  <div class="modal-overlay" id="forgotModal" role="dialog" aria-modal="true" aria-labelledby="forgotModalTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="forgotModalTitle">Forgot Password</h2>
+        <button type="button" class="modal-close" id="forgotModalClose" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">Enter your User ID or registered email. If an account exists, a password reset link will be sent.</p>
+        <div class="form-group">
+          <label for="forgotUserId">User ID or Email <span class="req">*</span></label>
+          <input type="text" id="forgotUserId" class="modal-input" autocomplete="username" aria-describedby="forgotUserIdError">
+          <p class="field-error" id="forgotUserIdError" hidden></p>
+        </div>
+        <p class="field-error" id="forgotError" hidden></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-modal-secondary" id="forgotModalCloseBtn">Cancel</button>
+        <button type="button" class="btn-modal-primary" id="forgotSubmitBtn">Send Reset Link</button>
+      </div>
+    </div>
+  </div>
+
+  
+  
+  <!-- Site footer -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <a href="homepage.html" class="logo-link">
+          <img src="images/landbank-logo-icon.png" alt="LANDBANK" class="footer-logo">
+        </a>
+        <a href="homepage.html" class="logo-link">
+          <img src="images/landbank-text-logo.png" alt="LANDBANK" class="footer-text-logo">
+        </a>
+      </div>
+      <div class="footer-middle">
+        <div class="care-header">
+          <img src="images/location-pin-icon.png" alt="Location" class="pin-icon">
+          <h3>LANDBANK Customer Care Center</h3>
+        </div>
+        <div class="care-details">
+          <div class="care-item">
+            <img src="images/phone-call-icon.png" alt="Phone" class="care-icon">
+            <span>
+              <a href="tel:+63284057000">(02) 8405-7000</a> (NCR) or
+              <a href="tel:1800104057000">1-800-10-405-7000</a> (PLDT Domestic Toll Free/Outside NCR)
+            </span>
+          </div>
+          <div class="care-item">
+            <img src="images/email-envelope-icon.png" alt="Email" class="care-icon">
+            <a href="homepage.html#sv-contact-panel" class="footer-care-email">customercare@landbank.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-right">
+        <p>Copyright © 2026<br>Land Bank of the Philippines.<br>All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  
+  <!-- Scroll to top -->
+  <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top" type="button" hidden>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M12 5l-7 7h4.5v7h5v-7H19l-7-7z" fill="currentColor"/>
+    </svg>
+  </button>
+
+
+<script src="script.js"></script>
+</body>
+</html>

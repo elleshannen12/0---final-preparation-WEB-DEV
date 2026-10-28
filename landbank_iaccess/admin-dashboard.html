@@ -1,0 +1,467 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="images/landbank-logo-icon.png">
+  <title>Dashboard | LANDBANK iAccess Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="admin-style.css">
+</head>
+<body class="page-admin-dashboard">
+  <div class="app-shell">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+      <div class="sidebar-header">
+        <svg class="sidebar-logo" viewBox="0 0 66 66" aria-hidden="true">
+          <circle cx="33" cy="33" r="30" fill="#fff"/>
+          <path d="M33 10c8 7 12 15 8 24-2 5-5 8-8 12-3-4-6-7-8-12-4-9 0-17 8-24z" fill="#026D3D"/>
+          <path d="M12 40c8-2 14 2 21 10M54 40c-8-2-14 2-21 10" stroke="#026D3D" stroke-width="3" fill="none"/>
+          <path d="M33 26v26" stroke="#fff" stroke-width="2"/>
+        </svg>
+        <div class="sidebar-brand">
+          <span class="sidebar-brand-name">LANDBANK</span>
+          <div class="sidebar-brand-meta">
+            <span class="sidebar-badge">iAccess</span>
+            <span class="sidebar-role">ADMIN</span>
+          </div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <a href="admin-dashboard.html" class="nav-link active" aria-current="page">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z M9 22V12h6v10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="nav-label">Dashboard</span>
+          </a>
+        </div>
+        <div class="nav-section">
+          <a href="admin-users.html" class="nav-link">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M4 17c0-3 2.5-5 6-5s6 2 6 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+            <span class="nav-label">Users</span>
+          </a>
+        </div>
+        <div class="nav-section">
+          <a href="admin-transactions.html" class="nav-link">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 6h14M3 10h14M3 14h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M14 12l3 2-3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="nav-label">All Transactions</span>
+          </a>
+        </div>
+        <div class="nav-section">
+          <a href="admin-gateway.html" class="nav-link">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 8h16" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="12" r="1" fill="currentColor"/></svg>
+            </span>
+            <span class="nav-label">Gateway</span>
+          </a>
+        </div>
+        <div class="nav-section">
+          <a href="admin-security.html" class="nav-link">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l7 3v5c0 4-3 7-7 8-4-1-7-4-7-8V5l7-3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M7.5 10l2 2 3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="nav-label">Security</span>
+          </a>
+        </div>
+        <div class="nav-section">
+          <a href="admin-settings.html" class="nav-link">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M 8.66 1.1 L 11.34 1.1 L 11.78 3.64 L 13.24 4.25 L 15.35 2.76 L 17.24 4.65 L 15.75 6.76 L 16.36 8.22 L 18.9 8.66 L 18.9 11.34 L 16.36 11.78 L 15.75 13.24 L 17.24 15.35 L 15.35 17.24 L 13.24 15.75 L 11.78 16.36 L 11.34 18.9 L 8.66 18.9 L 8.22 16.36 L 6.76 15.75 L 4.65 17.24 L 2.76 15.35 L 4.25 13.24 L 3.64 11.78 L 1.1 11.34 L 1.1 8.66 L 3.64 8.22 L 4.25 6.76 L 2.76 4.65 L 4.65 2.76 L 6.76 4.25 L 8.22 3.64 Z" stroke="currentColor" stroke-width="1.35" stroke-linejoin="round"/><circle cx="10" cy="10" r="3.2" stroke="currentColor" stroke-width="1.35"/><circle cx="10" cy="10" r="1.55" stroke="currentColor" stroke-width="1.35"/></svg>
+            </span>
+            <span class="nav-label">Settings</span>
+          </a>
+        </div>
+      </nav>
+      <div class="sidebar-footer">
+        <button type="button" class="sidebar-collapse-btn" id="sidebarCollapseBtn" aria-expanded="true" aria-label="Collapse sidebar">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11 4l-5 5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="collapse-label">Collapse</span>
+        </button>
+      </div>
+    </aside>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main -->
+    <div class="main-wrapper">
+      <!-- Header -->
+      <header class="header">
+        <button type="button" class="header-menu-btn" id="headerMenuBtn" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="header-actions">
+          <div class="dropdown">
+            <button type="button" class="header-btn" id="notifBtn" aria-label="Notifications" aria-expanded="false" aria-haspopup="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2a5 5 0 00-5 5v3.5l-1.5 2.5h13L15 10.5V7a5 5 0 00-5-5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8 15a2 2 0 004 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span class="notif-badge hidden" id="notifBadge">0</span>
+            </button>
+            <div class="dropdown-menu notif-panel" id="notifMenu" role="menu">
+              <div class="notif-panel-header">
+                <span>Notifications</span>
+                <button type="button" class="btn btn-ghost btn-sm" id="markAllReadBtn">Mark all read</button>
+              </div>
+              <div id="notifList"></div>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button type="button" class="profile-btn" id="profileBtn" aria-expanded="false" aria-haspopup="true">
+              <span class="profile-avatar">SA</span>
+              <span class="profile-name">System Administrator</span>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3.5 5.25L7 8.75l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="dropdown-menu" id="profileMenu" role="menu">
+              <button type="button" class="dropdown-item" role="menuitem">My Profile</button>
+              <div class="dropdown-divider"></div>
+              <button type="button" class="dropdown-item danger" id="signOutBtn" role="menuitem">Sign out</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Banners -->
+      <div class="maintenance-banner" id="maintenanceBanner">
+        Maintenance active <span id="maintenanceEndTime">—</span>
+      </div>
+      <div class="outage-banner" id="outageBanner">
+        InstaPay is down. Transfers are using fallback routing.
+        <a href="admin-gateway.html" class="btn btn-sm btn-secondary" style="margin-left:8px;">View status</a>
+      </div>
+
+      <!-- Page content -->
+      <main class="page-content">
+        <!-- Title row -->
+        <div class="dash-title-row">
+          <div class="dash-title-left">
+            <h1 class="page-title">Dashboard</h1>
+            <span class="updated-label" id="updatedLabel">Updated just now</span>
+          </div>
+          <div class="dash-title-controls">
+            <div class="segmented-control" role="group" aria-label="Date range">
+              <button type="button" class="seg-btn active" data-range="today">Today</button>
+              <button type="button" class="seg-btn" data-range="7d">7D</button>
+              <button type="button" class="seg-btn" data-range="30d">30D</button>
+              <button type="button" class="seg-btn" data-range="custom" id="customRangeBtn">Custom</button>
+            </div>
+            <select class="form-select auto-refresh-select" id="autoRefreshSelect" aria-label="Auto refresh">
+              <option value="0">Off</option>
+              <option value="30">30s</option>
+              <option value="60">60s</option>
+            </select>
+            <button type="button" class="btn btn-ghost btn-icon" id="refreshBtn" aria-label="Refresh dashboard">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M15 9a6 6 0 11-1.5-3.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15 3v4h-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- KPI cards -->
+        <section class="kpi-grid" id="kpiGrid" aria-label="Key performance indicators">
+          <!-- Filled by JS -->
+        </section>
+
+        <!-- Charts row -->
+        <section class="charts-row">
+          <div class="card chart-card" id="lineChartCard">
+            <div class="card-header">
+              <h2 class="card-title">7-Day Transaction Volume Trend</h2>
+              <div class="chart-toggle" role="group" aria-label="Chart metric">
+                <button type="button" class="seg-btn active" data-metric="volume">Volume</button>
+                <button type="button" class="seg-btn" data-metric="count">Count</button>
+              </div>
+            </div>
+            <div class="chart-container" id="lineChartContainer">
+              <svg id="lineChartSvg" viewBox="0 0 560 260" preserveAspectRatio="xMidYMid meet" aria-label="Line chart of transaction volume"></svg>
+              <div class="chart-tooltip hidden" id="lineChartTooltip"></div>
+            </div>
+            <div class="chart-error hidden" id="lineChartError">
+              <p>Couldn't load this widget</p>
+              <p class="text-muted" style="font-size:12px;">Reference: <code id="lineChartErrRef">ERR-8F3A21C9</code></p>
+              <button type="button" class="btn btn-secondary btn-sm" id="lineChartRetry">Retry</button>
+            </div>
+          </div>
+          <div class="card chart-card" id="doughnutChartCard">
+            <div class="card-header">
+              <h2 class="card-title">Transaction Distribution</h2>
+            </div>
+            <div class="doughnut-wrap">
+              <div class="doughnut-container" id="doughnutContainer">
+                <svg id="doughnutSvg" viewBox="0 0 200 200" aria-label="Doughnut chart of transaction types"></svg>
+                <div class="doughnut-center" id="doughnutCenter">
+                  <span class="doughnut-total" id="doughnutTotal">0</span>
+                  <span class="doughnut-label">Total</span>
+                </div>
+              </div>
+              <ul class="doughnut-legend" id="doughnutLegend"></ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Transactions + Alerts row -->
+        <section class="tables-row">
+          <div class="card table-card">
+            <div class="card-header">
+              <h2 class="card-title">Recent System Transactions</h2>
+            </div>
+            <div class="table-filters">
+              <div class="filter-search">
+                <input type="search" class="form-input" id="txSearch" placeholder="Search transactions..." aria-label="Search transactions">
+              </div>
+              <select class="form-select filter-select" id="txStatusFilter" aria-label="Filter by status">
+                <option value="all">All statuses</option>
+                <option value="Success">Success</option>
+                <option value="Pending">Pending</option>
+                <option value="Failed">Failed</option>
+                <option value="Flagged">Flagged</option>
+              </select>
+              <select class="form-select filter-select" id="txChannelFilter" aria-label="Filter by channel">
+                <option value="all">All channels</option>
+                <option value="Mobile">Mobile</option>
+                <option value="Web">Web</option>
+                <option value="QR">QR</option>
+                <option value="Branch">Branch</option>
+              </select>
+              <select class="form-select filter-select" id="txTypeFilter" aria-label="Filter by type">
+                <option value="all">All types</option>
+                <option value="Transfer">Transfer</option>
+                <option value="Bills">Bills</option>
+                <option value="QR Ph">QR Ph</option>
+                <option value="Cash In">Cash In</option>
+              </select>
+              <button type="button" class="btn btn-ghost btn-sm hidden" id="txClearFilters">Clear filters</button>
+            </div>
+            <div class="table-scroll">
+              <table class="data-table" id="txTable">
+                <thead>
+                  <tr>
+                    <th scope="col">Description</th>
+                    <th scope="col">Transaction ID</th>
+                    <th scope="col">User / Account</th>
+                    <th scope="col">Channel</th>
+                    <th scope="col">Type</th>
+                    <th scope="col" class="sortable" data-sort="date">
+                      <button type="button" class="sort-btn">Date &amp; Time <span class="sort-icon"></span></button>
+                    </th>
+                    <th scope="col" class="sortable" data-sort="amount">
+                      <button type="button" class="sort-btn">Amount <span class="sort-icon"></span></button>
+                    </th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="txTableBody">
+                </tbody>
+              </table>
+            </div>
+            <div class="table-empty hidden" id="txEmpty">
+              <p class="empty-title">No transactions found</p>
+              <p class="empty-desc">Try adjusting your filters or search.</p>
+              <button type="button" class="btn btn-secondary btn-sm" id="txEmptyClear">Clear filters</button>
+            </div>
+            <div class="table-footer">
+              <a href="admin-transactions.html" class="btn btn-ghost btn-sm">See all transactions →</a>
+            </div>
+          </div>
+
+          <div class="card alerts-card">
+            <div class="card-header">
+              <h2 class="card-title">Flagged / Suspicious Activity</h2>
+              <span class="badge badge-failed" id="alertCountBadge"><span class="badge-dot"></span> <span id="alertCount">0</span></span>
+            </div>
+            <div class="alerts-scroll-wrap">
+              <div class="alerts-scroll" id="alertsScroll">
+                <div id="alertsList"></div>
+                <div class="alerts-empty hidden" id="alertsEmpty">
+                  <p class="empty-title">No active alerts</p>
+                  <p class="empty-desc">You're all caught up.</p>
+                </div>
+              </div>
+              <div class="alerts-scrollbar" id="alertsScrollbar" aria-hidden="true">
+                <div class="alerts-scrollbar-thumb" id="alertsScrollbarThumb"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- System status strip -->
+        <section class="status-strip card" id="statusStrip" aria-label="System status">
+          <!-- Filled by JS -->
+        </section>
+
+        <!-- Activity log -->
+        <section class="card activity-card">
+          <div class="card-header">
+            <h2 class="card-title">Recent admin activity</h2>
+          </div>
+          <ul class="activity-list" id="activityList"></ul>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Toast container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Custom Date Range Modal -->
+  <div class="modal-backdrop" id="customDateModal" role="dialog" aria-modal="true" aria-labelledby="customDateTitle" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="customDateTitle">Custom Date Range</h2>
+        <button type="button" class="modal-close" data-modal-close aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4.5 4.5l9 9M13.5 4.5l-9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label" for="customStart">Start date <span class="required">*</span></label>
+          <input type="date" class="form-input" id="customStart" required>
+          <div class="form-error" id="customStartError"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="customEnd">End date <span class="required">*</span></label>
+          <input type="date" class="form-input" id="customEnd" required>
+          <div class="form-error" id="customEndError"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-ghost" data-modal-close>Cancel</button>
+        <button type="button" class="btn btn-primary" id="customDateApply">Apply</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transaction Detail Modal -->
+  <div class="modal-backdrop" id="txDetailModal" role="dialog" aria-modal="true" aria-labelledby="txDetailTitle" aria-hidden="true">
+    <div class="modal modal-lg">
+      <div class="modal-header">
+        <h2 class="modal-title" id="txDetailTitle">Transaction Detail</h2>
+        <button type="button" class="modal-close" data-modal-close aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4.5 4.5l9 9M13.5 4.5l-9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="modal-body" id="txDetailBody">
+        <!-- Filled by JS -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-ghost" data-modal-close>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Freeze Account Modal -->
+  <div class="modal-backdrop" id="freezeModal" role="dialog" aria-modal="true" aria-labelledby="freezeTitle" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="freezeTitle">Freeze Account</h2>
+        <button type="button" class="modal-close" data-modal-close aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4.5 4.5l9 9M13.5 4.5l-9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="freeze-summary" id="freezeSummary"></div>
+        <form id="freezeForm" novalidate>
+          <div class="form-group">
+            <span class="form-label">Freeze scope <span class="required">*</span></span>
+            <div class="form-radio-group">
+              <label class="form-radio"><input type="radio" name="freezeScope" value="debits" required> Debits only</label>
+              <label class="form-radio"><input type="radio" name="freezeScope" value="all"> All activity</label>
+            </div>
+            <div class="form-error" id="freezeScopeError"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="freezeReason">Reason <span class="required">*</span></label>
+            <textarea class="form-textarea" id="freezeReason" rows="3" maxlength="250" required></textarea>
+            <div class="form-char-count" id="freezeReasonCount">0 / 250</div>
+            <div class="form-error" id="freezeReasonError"></div>
+          </div>
+          <div class="form-group">
+            <label class="form-check">
+              <input type="checkbox" id="freezeNotify" checked>
+              Notify customer
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="freezePassword">Confirm your password <span class="required">*</span></label>
+            <div class="password-wrap">
+              <input type="password" class="form-input" id="freezePassword" required autocomplete="current-password">
+              <button type="button" class="password-toggle" aria-label="Show password">
+                <img src="images/admin-eye-off.png" alt="" class="eye-icon" width="20" height="20">
+              </button>
+            </div>
+            <div class="form-hint">Password: admin123</div>
+            <div class="form-error" id="freezePasswordError"></div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-ghost" data-modal-close>Cancel</button>
+        <button type="button" class="btn btn-destructive" id="freezeSubmit">Freeze account</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alert Review Modal -->
+  <div class="modal-backdrop" id="alertReviewModal" role="dialog" aria-modal="true" aria-labelledby="alertReviewTitle" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="alertReviewTitle">Review Alert</h2>
+        <button type="button" class="modal-close" data-modal-close aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4.5 4.5l9 9M13.5 4.5l-9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="modal-body" id="alertReviewBody">
+        <!-- Filled by JS -->
+      </div>
+      <div class="modal-footer" style="flex-wrap:wrap;gap:8px;">
+        <button type="button" class="btn btn-ghost" data-modal-close>Cancel</button>
+        <button type="button" class="btn btn-secondary" id="alertDismissBtn">Dismiss</button>
+        <button type="button" class="btn btn-primary" id="alertEscalateBtn">Escalate to case</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dismiss reason sub-form (inline in review modal, toggled) -->
+  <div class="modal-backdrop" id="dismissReasonModal" role="dialog" aria-modal="true" aria-labelledby="dismissReasonTitle" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="dismissReasonTitle">Dismiss Alert</h2>
+        <button type="button" class="modal-close" data-modal-close aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4.5 4.5l9 9M13.5 4.5l-9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label" for="dismissReasonSelect">Reason <span class="required">*</span></label>
+          <select class="form-select" id="dismissReasonSelect" required>
+            <option value="">Select reason</option>
+            <option value="False positive">False positive</option>
+            <option value="Verified with customer">Verified with customer</option>
+            <option value="Duplicate">Duplicate</option>
+            <option value="Other">Other</option>
+          </select>
+          <div class="form-error" id="dismissReasonSelectError"></div>
+        </div>
+        <div class="form-group hidden" id="dismissNoteGroup">
+          <label class="form-label" for="dismissNote">Note <span class="required">*</span></label>
+          <textarea class="form-textarea" id="dismissNote" rows="3" maxlength="250"></textarea>
+          <div class="form-char-count" id="dismissNoteCount">0 / 250</div>
+          <div class="form-error" id="dismissNoteError"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-ghost" data-modal-close>Cancel</button>
+        <button type="button" class="btn btn-primary" id="dismissConfirmBtn">Confirm dismiss</button>
+      </div>
+    </div>
+  </div>
+
+  
+  <script src="admin-script.js"></script>
+</body>
+</html>

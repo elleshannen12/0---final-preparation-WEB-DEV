@@ -1,0 +1,342 @@
+
+                   
+<!-- LANDBANK iAccess Terms and Conditions page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms and Conditions | LANDBANK iAccess</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/png" href="images/landbank-logo-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<!-- tc-page enables terms layout -->
+<body class="login-page tc-page">
+  
+  
+  <!-- Fixed site header (logo only) -->
+  <header class="main-header">
+    <div class="header-top">
+      <div class="header-left">
+        <a href="homepage.html" class="logo-link">
+          <img src="images/landbank-text-logo.png" alt="LANDBANK" class="landbank-text-logo">
+        </a>
+        <span class="header-divider">|</span>
+        <img src="images/overseas-filipino-bank-logo.png" alt="Overseas Filipino Bank" class="ofb-logo">
+      </div>
+      <div class="header-right">
+        <img src="images/iaccess-lock-logo.png" alt="iAccess" class="iaccess-logo">
+      </div>
+    </div>
+  </header>
+
+  
+  
+  <!-- Mobile menu (shared markup) -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+  <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="#">About Us</a>
+    <a href="#">FAQs</a>
+    <a href="#">Security Policy</a>
+    <a href="#">Data Privacy Statement</a>
+    <a href="#">Advisory on ATM Use</a>
+    <a href="#">iAccess Features</a>
+    <a href="#">Find Us</a>
+  </nav>
+
+  
+  
+  <!-- Terms layout: sidebar TOC + content -->
+  <main class="tc-main">
+    <div class="tc-layout">
+      
+    
+      <!-- Sticky table of contents -->
+      <aside class="tc-sidebar" aria-label="Terms sections">
+        <a href="login.html" class="tc-back-btn" id="tc-back-link">
+          <span class="tc-back-arrow" aria-hidden="true">‹</span>
+          <span class="tc-back-text">Back to Log In</span>
+        </a>
+        <p class="tc-sidebar-label">TABLE OF CONTENTS</p>
+        
+      
+        <!-- Mobile TOC dropdown -->
+        <div class="tc-toc-dropdown-wrap">
+          <label for="tcTocSelect" class="visually-hidden">Jump to section</label>
+          <select id="tcTocSelect" class="tc-toc-select" aria-label="Table of contents">
+            <option value="#tc-section-1">1. Accessing the service</option>
+            <option value="#tc-section-2">2. Keeping your account secure</option>
+            <option value="#tc-section-3">3. What you can do online</option>
+            <option value="#tc-section-4">4. The bank's rights and discretion</option>
+            <option value="#tc-section-5">5. Your responsibilities and liability</option>
+            <option value="#tc-section-6">6. Fees, changes, and notices</option>
+            <option value="#tc-section-7">7. Reporting problems and disputes</option>
+            <option value="#tc-section-8">8. When the bank isn't liable</option>
+            <option value="#tc-section-9">9. Ending this agreement</option>
+            <option value="#tc-section-10">10. Customer support</option>
+            <option value="#tc-section-11">11. Data privacy</option>
+          </select>
+        </div>
+        <nav class="tc-nav" id="tcNav">
+          <a href="#tc-section-1" class="tc-nav-link active" data-section="1" aria-current="true">1. Accessing the service</a>
+          <a href="#tc-section-2" class="tc-nav-link" data-section="2">2. Keeping your account secure</a>
+          <a href="#tc-section-3" class="tc-nav-link" data-section="3">3. What you can do online</a>
+          <a href="#tc-section-4" class="tc-nav-link" data-section="4">4. The bank's rights and discretion</a>
+          <a href="#tc-section-5" class="tc-nav-link" data-section="5">5. Your responsibilities and liability</a>
+          <a href="#tc-section-6" class="tc-nav-link" data-section="6">6. Fees, changes, and notices</a>
+          <a href="#tc-section-7" class="tc-nav-link" data-section="7">7. Reporting problems and disputes</a>
+          <a href="#tc-section-8" class="tc-nav-link" data-section="8">8. When the bank isn't liable</a>
+          <a href="#tc-section-9" class="tc-nav-link" data-section="9">9. Ending this agreement</a>
+          <a href="#tc-section-10" class="tc-nav-link" data-section="10">10. Customer support</a>
+          <a href="#tc-section-11" class="tc-nav-link" data-section="11">11. Data privacy</a>
+        </nav>
+      </aside>
+
+      
+    
+      <!-- Legal sections 1–11 -->
+      <div class="tc-content">
+        <h1 class="tc-page-title">Terms and Conditions</h1>
+        <p class="tc-page-subtitle">Online and Digital Banking Services</p>
+        <hr class="tc-divider">
+
+        <p class="tc-intro">This agreement explains how your <strong>LANDBANK iAccess</strong> works, what you're responsible for, and what the bank is and isn't liable for. By checking "I agree" at the bottom of the sign-up flow, you confirm you've read and accept these terms in full.</p>
+
+        
+      
+        <section class="tc-section" id="tc-section-1">
+          <div class="tc-section-header">
+            <span class="tc-num">1</span>
+            <h2>Accessing the service</h2>
+          </div>
+          <p>LANDBANK iAccess is a service the bank makes available at its discretion, for as long as you continue to qualify for it under these terms. It's intended to run 24 hours a day, seven days a week, but the bank doesn't promise <strong><u>uninterrupted access</u></strong> — maintenance windows, technical failures, or events outside its control can make some or all features temporarily unavailable.</p>
+          <ul class="tc-bullets">
+            <li>Entering the wrong password <strong><u>three times in a row locks your account</u></strong> for security reasons.</li>
+            <li>Sessions that sit idle for too long are <strong><u>automatically logged out</u></strong>.</li>
+            <li>Transactions submitted before the <strong><u>daily processing cutoff</u></strong> post the same banking day. Anything submitted after the cutoff, or on a weekend or holiday, is processed on the <strong><u>next banking day</u></strong>.</li>
+          </ul>
+          <p>Banking days run Monday through Friday, excluding holidays.</p>
+        </section>
+
+        
+        <section class="tc-section" id="tc-section-2">
+          <div class="tc-section-header">
+            <span class="tc-num">2</span>
+            <h2>Keeping your account secure</h2>
+          </div>
+
+          <h3 class="tc-subhead">Enrollment</h3>
+          <p>You can enroll an eligible account either in person at a branch, by submitting a signed enrollment form, or entirely online through the platform itself.</p>
+
+          <h3 class="tc-subhead">Joint accounts</h3>
+          <p>If an account has more than one owner, any transaction made online by one owner is treated as <strong><u>authorized by all owners</u></strong>. Each account holder is expected to have the consent of the others before transacting. The bank may restrict or suspend online access to a joint account at its own discretion.</p>
+
+          <h3 class="tc-subhead">Paying or transferring to other people's accounts</h3>
+          <p>You can optionally register other accounts — belonging to you at another bank, or to a third party — as transfer or bill-payment destinations. Registering these in advance at a branch means future transfers skip the one-time PIN step; transfers to accounts you haven't pre-registered will always require a <strong><u>one-time PIN</u></strong> sent to your mobile number. Up to <strong><u>five third-party accounts</u></strong> can be registered as destinations at a time.</p>
+
+          <h3 class="tc-subhead">Transaction alerts</h3>
+          <p>Every financial transaction generates an email or SMS notification to your registered contact details. You're expected to check these regularly to confirm your activity looks correct.</p>
+
+          <h3 class="tc-subhead">Passwords</h3>
+          <p>Choose a password that's hard for someone else to guess — avoid your name, birthdate, phone number, or simple sequences like "123456." Don't write it down or <strong><u>share it with anyone</u></strong>, including family members, and change it periodically or immediately if you suspect it's been compromised.</p>
+
+          <h3 class="tc-subhead">One-time PINs (OTP)</h3>
+          <p>Certain transactions require a one-time PIN sent by SMS to your registered mobile number. It's a single-use code meant only for you — <strong><u>never share it with anyone</u></strong>, including someone claiming to be from the bank's support team, except when a bank representative needs it to verify your identity during an official unlock request that you yourself initiated.</p>
+        </section>
+
+        
+        <section class="tc-section" id="tc-section-3">
+          <div class="tc-section-header">
+            <span class="tc-num">3</span>
+            <h2>What you can do online</h2>
+          </div>
+          <ul class="tc-bullets">
+            <li><strong>View account activity:</strong> real-time balances, holds, and up to 90 days of transaction history for each enrolled account.</li>
+            <li><strong>Loans:</strong> apply for a loan, verify and confirm an application, register an approved loan, and view balances, amounts due, and payment history.</li>
+            <li><strong>Bills payment:</strong> pay registered or unregistered billers online; paying an unregistered biller requires a <strong><u>one-time PIN</u></strong>.</li>
+            <li><strong>Fund transfers:</strong> move money between your own accounts, to registered or unregistered third parties, or to other banks via instant transfer networks. Transfers to your own or pre-registered accounts don't require a one-time PIN; <strong><u>everything else does</u></strong>.</li>
+            <li><strong>Checkbook requests:</strong> order a new checkbook online, up to <strong><u>three per account per day</u></strong>. The cost is automatically deducted from your account once the branch approves the order.</li>
+          </ul>
+        </section>
+
+        
+        <section class="tc-section" id="tc-section-4">
+          <div class="tc-section-header">
+            <span class="tc-num">4</span>
+            <h2>The bank's rights and discretion</h2>
+          </div>
+          <p>The bank can restrict, suspend, or shut off your access to some or all features at any time, <strong><u>without needing to give advance notice</u></strong>, if it reasonably believes you've broken these terms, broken the law, or that continued access could put the bank, you, or another client at risk. It also isn't obligated to carry out every transaction you submit — for example, it can decline or reverse a transaction it believes was made in error or resulted from <strong><u>fraud</u></strong>, even after the funds were initially credited.</p>
+          <p>The bank may also, at its discretion, verify any instruction you send by contacting you directly, and may decline instructions that conflict with its policies even without prior warning.</p>
+        </section>
+
+        
+        <section class="tc-section" id="tc-section-5">
+          <div class="tc-section-header">
+            <span class="tc-num">5</span>
+            <h2>Your responsibilities and liability</h2>
+          </div>
+          <p>You're responsible for keeping your login ID, password, and one-time PINs <strong><u>confidential</u></strong>, and for every transaction carried out using them — the bank treats any instruction submitted with valid credentials as <strong><u>coming from you and as final</u></strong>. You also agree not to use bots, scrapers, or other automated tools to interact with the platform outside its normal interface.</p>
+          <p>It's your job to make sure there's enough available balance for any transaction — scheduled, future-dated, or immediate — and any fees or penalties from a failed transaction due to <strong><u>insufficient funds</u></strong> are your responsibility. You're also expected to keep your email address, phone number, and other contact details up to date, since the bank isn't liable for messages that don't reach you because your information was outdated.</p>
+          <p>If you believe your account has been compromised, or notice any activity you don't recognize, <strong><u>contact the bank immediately</u></strong> using the channels in <a href="#tc-section-10" class="tc-inline-link">Section 10</a>.</p>
+        </section>
+
+        
+        <section class="tc-section" id="tc-section-6">
+          <div class="tc-section-header">
+            <span class="tc-num">6</span>
+            <h2>Fees, changes, and notices</h2>
+          </div>
+          <p>Standard fees apply to certain features and may change over time within legal limits. The bank will publish updated fees and terms on its official website or notify you by email; <strong><u>continuing to use the service</u></strong> after a change takes effect counts as accepting it.</p>
+        </section>
+
+        
+        <section class="tc-section" id="tc-section-7">
+          <div class="tc-section-header">
+            <span class="tc-num">7</span>
+            <h2>Reporting problems and disputes</h2>
+          </div>
+          <p>You should <strong><u>check your transaction history regularly</u></strong>. If something looks wrong — a transaction you didn't authorize, a missing payment, an incorrect entry — you need to report it to the bank <strong><u>within 20 calendar days</u></strong> of the transaction or statement date. Reports made after that window may be harder for the bank to investigate or resolve in your favor.</p>
+        </section>
+
+        
+        <section class="tc-section" id="tc-section-8">
+          <div class="tc-section-header">
+            <span class="tc-num">8</span>
+            <h2>When the bank isn't liable</h2>
+          </div>
+          <p>Except where a loss is directly caused by the bank's own <strong><u>negligence or misconduct</u></strong>, the bank isn't responsible for losses arising from things outside its reasonable control, including:</p>
+          <ul class="tc-bullets">
+            <li>Natural disasters, power outages, or other force-majeure events;</li>
+            <li>Technical failures in hardware, software, or telecommunications infrastructure, including issues caused by third-party internet or mobile carriers;</li>
+            <li>Unauthorized account access that results from you <strong><u>sharing your credentials</u></strong>, losing your device, or falling for a scam — rather than from a failure on the bank's part.</li>
+          </ul>
+          <p>The bank also doesn't guarantee that a one-time PIN or notification will arrive promptly, since delivery depends in part on your mobile carrier and internet provider.</p>
+        </section>
+
+        
+        <section class="tc-section" id="tc-section-9">
+          <div class="tc-section-header">
+            <span class="tc-num">9</span>
+            <h2>Ending this agreement</h2>
+          </div>
+          <p>Either you or the bank can end this agreement by giving <strong><u>10 banking days' written notice</u></strong>. If you request account deletion, it typically takes effect <strong><u>within 5 business days</u></strong>. The bank may also limit or end your access without that notice period if your account becomes dormant, is closed, is subject to a legal hold, or is linked to <strong><u>suspected fraud</u></strong>.</p>
+        </section>
+
+        
+        <section class="tc-section" id="tc-section-10">
+          <div class="tc-section-header">
+            <span class="tc-num">10</span>
+            <h2>Customer support</h2>
+          </div>
+          <p>You can reach customer support through the bank's official website, its 24/7 customer service hotline, or in person at any branch. If a complaint isn't resolved to your satisfaction, you can also escalate it to your country's central bank consumer-protection division.</p>
+        </section>
+
+        
+        <section class="tc-section" id="tc-section-11">
+          <div class="tc-section-header">
+            <span class="tc-num">11</span>
+            <h2>Data privacy</h2>
+          </div>
+          <p>By using this service, you consent to your personal and financial information being <strong><u>collected and processed</u></strong> for the purpose of providing banking services, in line with applicable data privacy law. The bank may share relevant information with:</p>
+          <ul class="tc-bullets">
+            <li>Contractors and service providers that support its systems;</li>
+            <li>Business or program partners involved in a product you've signed up for;</li>
+            <li>Credit bureaus, and — if you default on an obligation — debt collection agencies;</li>
+            <li>Government, tax, or law enforcement bodies where required by law.</li>
+          </ul>
+          <p>You have the right to be informed about how your data is used, to access it, to request corrections, to object to certain processing, to file a complaint, and to request that your data be transferred elsewhere. <strong><u>Withdrawing consent</u></strong> is possible, but may mean the bank can no longer provide some or all of these services to you.</p>
+        </section>
+
+        
+      
+        <!-- End-of-page agreement summary card -->
+        <div class="tc-bottom-card">
+          <div class="tc-bottom-card-top">
+            <div class="tc-bottom-icon-wrap">
+              <img src="images/tc-clipboard-icon.png" alt="Clipboard checklist" class="tc-bottom-clipboard" width="56" height="56">
+            </div>
+            <div class="tc-bottom-card-intro">
+              <h3>What happens after you finish reading?</h3>
+              <p>You've reached the end of the Terms and Conditions. Once you agree, you'll be able to proceed with your registration or continue using the service.</p>
+            </div>
+          </div>
+          <div class="tc-bottom-features">
+            <div class="tc-feature-col">
+              <img src="images/tc-shield-icon.png" alt="Shield with checkmark" class="tc-feature-icon" width="48" height="48">
+              <strong>Your information is safe</strong>
+              <span>We use strong security measures to protect your data.</span>
+            </div>
+            <div class="tc-feature-col">
+              <img src="images/tc-clock-support-icon.png" alt="24/7 support" class="tc-feature-icon" width="48" height="48">
+              <strong>24/7 Support</strong>
+              <span>Get help through our official channels</span>
+            </div>
+            <div class="tc-feature-col">
+              <img src="images/tc-accounts-grid-icon.png" alt="Account grid" class="tc-feature-icon" width="48" height="48">
+              <strong>Access your accounts</strong>
+              <span>Enjoy convenient and Secure banking, anytime. anywhere.</span>
+            </div>
+          </div>
+          <hr class="tc-bottom-divider">
+          <p class="tc-agree-line">
+            <img src="images/tc-checkmark-icon.png" alt="Confirmed" class="tc-agree-check" width="22" height="22">
+            <span>By continuing, you confirm that you have read, understood, and agree to the Terms and Conditions</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  
+  
+  <!-- Site footer -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <a href="homepage.html" class="logo-link">
+          <img src="images/landbank-logo-icon.png" alt="LANDBANK" class="footer-logo">
+        </a>
+        <a href="homepage.html" class="logo-link">
+          <img src="images/landbank-text-logo.png" alt="LANDBANK" class="footer-text-logo">
+        </a>
+      </div>
+      <div class="footer-middle">
+        <div class="care-header">
+          <img src="images/location-pin-icon.png" alt="Location" class="pin-icon">
+          <h3>LANDBANK Customer Care Center</h3>
+        </div>
+        <div class="care-details">
+          <div class="care-item">
+            <img src="images/phone-call-icon.png" alt="Phone" class="care-icon">
+            <span>
+              <a href="tel:+63284057000">(02) 8405-7000</a> (NCR) or
+              <a href="tel:1800104057000">1-800-10-405-7000</a> (PLDT Domestic Toll Free/Outside NCR)
+            </span>
+          </div>
+          <div class="care-item">
+            <img src="images/email-envelope-icon.png" alt="Email" class="care-icon">
+            <a href="homepage.html#sv-contact-panel" class="footer-care-email" target="_blank" rel="noopener noreferrer">customercare@landbank.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-right">
+        <p>Copyright © 2026<br>Land Bank of the Philippines.<br>All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  
+  
+  <!-- Scroll to top -->
+  <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top" type="button" hidden>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M12 5l-7 7h4.5v7h5v-7H19l-7-7z" fill="currentColor"/>
+    </svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>

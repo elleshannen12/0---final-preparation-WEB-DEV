@@ -1,0 +1,842 @@
+
+
+<!-- LANDBANK iAccess multi-step registration -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration | LANDBANK iAccess</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/png" href="images/landbank-logo-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<!-- registration-page enables the wizard script -->
+<body class="login-page registration-page">
+  
+  
+  <!-- Fixed site header -->
+  <header class="main-header">
+    <div class="header-top">
+      <div class="header-left">
+        <a href="homepage.html" class="logo-link">
+          <img src="images/landbank-text-logo.png" alt="LANDBANK" class="landbank-text-logo">
+        </a>
+        <span class="header-divider">|</span>
+        <img src="images/overseas-filipino-bank-logo.png" alt="Overseas Filipino Bank" class="ofb-logo">
+      </div>
+      <div class="header-right">
+        <img src="images/iaccess-lock-logo.png" alt="iAccess" class="iaccess-logo">
+      </div>
+    </div>
+  </header>
+
+  
+  
+  <!-- Mobile menu (shared markup) -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+  <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="#">About Us</a>
+    <a href="#">FAQs</a>
+    <a href="#">Security Policy</a>
+    <a href="#">Data Privacy Statement</a>
+    <a href="#">Advisory on ATM Use</a>
+    <a href="#">iAccess Features</a>
+    <a href="#">Find Us</a>
+  </nav>
+
+  
+  
+  <!-- Registration wizard -->
+  <main class="login-main reg-main">
+    
+    
+    <!-- Step progress indicator -->
+    <div class="reg-stepper" id="regStepper" aria-label="Registration progress">
+      <div class="reg-step active" data-step="1">
+        <span class="reg-step-num">1</span>
+        <span class="reg-step-label">Account</span>
+      </div>
+      <div class="reg-step-line"></div>
+      <div class="reg-step" data-step="2">
+        <span class="reg-step-num">2</span>
+        <span class="reg-step-label">Personal</span>
+      </div>
+      <div class="reg-step-line"></div>
+      <div class="reg-step" data-step="3">
+        <span class="reg-step-num">3</span>
+        <span class="reg-step-label">Security</span>
+      </div>
+      <div class="reg-step-line"></div>
+      <div class="reg-step" data-step="4">
+        <span class="reg-step-num">4</span>
+        <span class="reg-step-label">Log-in</span>
+      </div>
+      <div class="reg-step-line"></div>
+      <div class="reg-step" data-step="5">
+        <span class="reg-step-num">5</span>
+        <span class="reg-step-label">Review</span>
+      </div>
+    </div>
+
+    
+    
+    <!-- Step 1: account verification -->
+    <div class="reg-card" id="step1" data-step-panel="1">
+      <h1 class="reg-title">Verify your account</h1>
+      <p class="reg-subtitle">We'll match this to your existing bank account.</p>
+      <div class="reg-note">
+        <strong>Note:</strong> Items marked with asterisk(<span class="req">*</span>) are required. Please type <strong>N/A</strong> if these items are not applicable.
+      </div>
+
+      <div class="form-group">
+        <label class="reg-label" for="atmAccountNo">ATM Account No. <span class="req">*</span></label>
+        <input type="text" id="atmAccountNo" class="reg-input" placeholder="10-digit account number" maxlength="10" inputmode="numeric" autocomplete="off">
+        <p class="reg-hint">Digits only, no spaces or dashes</p>
+        <p class="field-error" id="atmAccountNoError" hidden></p>
+      </div>
+
+      <div class="reg-row">
+        <div class="form-group reg-col">
+          <label class="reg-label" for="atmPin">ATM PIN <span class="req">*</span></label>
+          <div class="reg-password-wrap">
+            <input type="password" id="atmPin" class="reg-input" placeholder="4-digit PIN" maxlength="4" inputmode="numeric" autocomplete="off">
+            <button type="button" class="eye-toggle reg-eye-toggle" id="atmPinEyeToggle" aria-label="Show PIN" aria-pressed="false">
+              <img src="images/login-eye-off.png" alt="" id="atmPinEyeIcon" width="22" height="22">
+            </button>
+          </div>
+          <p class="field-error" id="atmPinError" hidden></p>
+        </div>
+        <div class="form-group reg-col">
+          <label class="reg-label" for="jaiSelect">
+            JAI (Joint Account Indicator) <span class="req">*</span>
+            <button type="button" class="jai-info-btn" id="jaiInfoBtn" aria-label="About JAI" title="About JAI">
+              <img src="images/register-info.png" alt="Info" width="18" height="18">
+            </button>
+          </label>
+          <select id="jaiSelect" class="reg-input reg-select">
+            <option value="">Select</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+          </select>
+          <p class="field-error" id="jaiError" hidden></p>
+        </div>
+      </div>
+
+      <div class="form-group reg-checkbox-row">
+        <label class="reg-checkbox-label">
+          <input type="checkbox" id="enableFundTransfer">
+          <span>Enable Fund Transfer</span>
+        </label>
+      </div>
+    </div>
+
+    
+    
+    <!-- Step 2: personal information -->
+    <div class="reg-card" id="step2" data-step-panel="2" hidden>
+      <h1 class="reg-title">Personal Information</h1>
+      <p class="reg-subtitle">This should match your government-issued ID.</p>
+      <div class="reg-note">
+        <strong>Note:</strong> Items marked with asterisk(<span class="req">*</span>) are required. Please type <strong>N/A</strong> if these items are not applicable.
+      </div>
+
+      <h2 class="reg-section-title">PERSONAL DETAILS</h2>
+      <div class="reg-row">
+        <div class="form-group reg-col">
+          <label class="reg-label" for="firstName">First Name <span class="req">*</span></label>
+          <input type="text" id="firstName" class="reg-input" autocomplete="given-name" required minlength="2" maxlength="80">
+          <p class="field-error" id="firstNameError" hidden></p>
+        </div>
+        <div class="form-group reg-col">
+          <label class="reg-label" for="middleName">Middle Name</label>
+          <input type="text" id="middleName" class="reg-input" autocomplete="additional-name" maxlength="80" placeholder="Optional">
+          <p class="field-error" id="middleNameError" hidden></p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="reg-label" for="lastName">Last Name <span class="req">*</span></label>
+        <input type="text" id="lastName" class="reg-input" autocomplete="family-name" required minlength="2" maxlength="80">
+        <p class="field-error" id="lastNameError" hidden></p>
+      </div>
+      <div class="form-group">
+        <span class="reg-label">Mother's Maiden Name <span class="req">*</span></span>
+      </div>
+      <div class="reg-row">
+        <div class="form-group reg-col">
+          <label class="reg-label" for="motherFirstName">First Name <span class="req">*</span></label>
+          <input type="text" id="motherFirstName" class="reg-input" required minlength="2" maxlength="80" autocomplete="off">
+          <p class="field-error" id="motherFirstNameError" hidden></p>
+        </div>
+        <div class="form-group reg-col">
+          <label class="reg-label" for="motherMiddleName">Middle Name</label>
+          <input type="text" id="motherMiddleName" class="reg-input" maxlength="80" autocomplete="off" placeholder="Optional">
+          <p class="field-error" id="motherMiddleNameError" hidden></p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="reg-label" for="motherLastName">Last Name <span class="req">*</span></label>
+        <input type="text" id="motherLastName" class="reg-input" required minlength="2" maxlength="80" autocomplete="off">
+        <p class="field-error" id="motherLastNameError" hidden></p>
+      </div>
+
+      <div class="reg-row">
+        <div class="form-group reg-col">
+          <label class="reg-label" for="gender">Gender <span class="req">*</span></label>
+          <select id="gender" class="reg-input reg-select">
+            <option value="">Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+          <p class="field-error" id="genderError" hidden></p>
+        </div>
+        <div class="form-group reg-col">
+          <label class="reg-label" for="civilStatus">Civil Status <span class="req">*</span></label>
+          <select id="civilStatus" class="reg-input reg-select">
+            <option value="">Select</option>
+            <option value="Single">Single</option>
+            <option value="Married">Married</option>
+            <option value="Widowed">Widowed</option>
+            <option value="Separated">Separated</option>
+            <option value="Annulled">Annulled</option>
+          </select>
+          <p class="field-error" id="civilStatusError" hidden></p>
+        </div>
+      </div>
+
+      <div id="spouseSection" hidden>
+        <div class="form-group">
+          <span class="reg-label">Spouse's Full Name</span>
+        </div>
+        <div class="reg-row">
+          <div class="form-group reg-col">
+            <label class="reg-label" for="spouseFirstName">First Name</label>
+            <input type="text" id="spouseFirstName" class="reg-input" maxlength="80" autocomplete="off">
+            <p class="field-error" id="spouseFirstNameError" hidden></p>
+          </div>
+          <div class="form-group reg-col">
+            <label class="reg-label" for="spouseMiddleName">Middle Name</label>
+            <input type="text" id="spouseMiddleName" class="reg-input" maxlength="80" autocomplete="off" placeholder="Optional">
+            <p class="field-error" id="spouseMiddleNameError" hidden></p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="reg-label" for="spouseLastName">Last Name</label>
+          <input type="text" id="spouseLastName" class="reg-input" maxlength="80" autocomplete="off">
+          <p class="field-error" id="spouseLastNameError" hidden></p>
+        </div>
+      </div>
+      <div class="reg-row">
+        <div class="form-group reg-col">
+          <label class="reg-label" for="birthday">Birthday <span class="req">*</span></label>
+          <input type="date" id="birthday" class="reg-input" autocomplete="bday" aria-describedby="birthdayError">
+          <p class="field-error" id="birthdayError" hidden></p>
+        </div>
+        <div class="form-group reg-col">
+          <label class="reg-label" for="tin">TIN</label>
+          <input type="text" id="tin" class="reg-input" placeholder="Optional" maxlength="12" inputmode="numeric" autocomplete="off">
+          <p class="field-error" id="tinError" hidden></p>
+        </div>
+      </div>
+
+      <h2 class="reg-section-title">ADDRESS</h2>
+      <div class="form-group">
+        <label class="reg-label" for="street">No./Street <span class="req">*</span></label>
+        <input type="text" id="street" class="reg-input">
+        <p class="field-error" id="streetError" hidden></p>
+      </div>
+      <div class="form-group">
+        <label class="reg-label" for="barangay">Barangay/Subdivision <span class="req">*</span></label>
+        <input type="text" id="barangay" class="reg-input">
+        <p class="field-error" id="barangayError" hidden></p>
+      </div>
+      <div class="reg-row">
+        <div class="form-group reg-col">
+          <label class="reg-label" for="city">City/Municipality <span class="req">*</span></label>
+          <input type="text" id="city" class="reg-input">
+          <p class="field-error" id="cityError" hidden></p>
+        </div>
+        <div class="form-group reg-col">
+          <label class="reg-label" for="province">Province <span class="req">*</span></label>
+          <input type="text" id="province" class="reg-input">
+          <p class="field-error" id="provinceError" hidden></p>
+        </div>
+      </div>
+      <div class="reg-row">
+        <div class="form-group reg-col">
+          <label class="reg-label" for="zip">ZIP code</label>
+          <input type="text" id="zip" class="reg-input" placeholder="Optional" maxlength="10">
+          <p class="field-error" id="zipError" hidden></p>
+        </div>
+        <div class="form-group reg-col">
+          <label class="reg-label" for="country">Country <span class="req">*</span></label>
+          <select id="country" class="reg-input reg-select">
+            <option value="">Select</option>
+            <option value="Afghanistan">Afghanistan</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Australia">Australia</option>
+            <option value="Austria">Austria</option>
+            <option value="Bahrain">Bahrain</option>
+            <option value="Bangladesh">Bangladesh</option>
+            <option value="Belgium">Belgium</option>
+            <option value="Brazil">Brazil</option>
+            <option value="Canada">Canada</option>
+            <option value="Chile">Chile</option>
+            <option value="China">China</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Czech Republic">Czech Republic</option>
+            <option value="Denmark">Denmark</option>
+            <option value="Ecuador">Ecuador</option>
+            <option value="Egypt">Egypt</option>
+            <option value="Finland">Finland</option>
+            <option value="France">France</option>
+            <option value="Germany">Germany</option>
+            <option value="Greece">Greece</option>
+            <option value="Hong Kong">Hong Kong</option>
+            <option value="Hungary">Hungary</option>
+            <option value="India">India</option>
+            <option value="Indonesia">Indonesia</option>
+            <option value="Ireland">Ireland</option>
+            <option value="Italy">Italy</option>
+            <option value="Japan">Japan</option>
+            <option value="Jordan">Jordan</option>
+            <option value="Kenya">Kenya</option>
+            <option value="Kuwait">Kuwait</option>
+            <option value="Lebanon">Lebanon</option>
+            <option value="Macau">Macau</option>
+            <option value="Malaysia">Malaysia</option>
+            <option value="Mexico">Mexico</option>
+            <option value="Netherlands">Netherlands</option>
+            <option value="New Zealand">New Zealand</option>
+            <option value="Nigeria">Nigeria</option>
+            <option value="Norway">Norway</option>
+            <option value="Oman">Oman</option>
+            <option value="Pakistan">Pakistan</option>
+            <option value="Peru">Peru</option>
+            <option value="Philippines" selected>Philippines</option>
+            <option value="Poland">Poland</option>
+            <option value="Portugal">Portugal</option>
+            <option value="Qatar">Qatar</option>
+            <option value="Russia">Russia</option>
+            <option value="Saudi Arabia">Saudi Arabia</option>
+            <option value="Singapore">Singapore</option>
+            <option value="South Africa">South Africa</option>
+            <option value="South Korea">South Korea</option>
+            <option value="Spain">Spain</option>
+            <option value="Sweden">Sweden</option>
+            <option value="Switzerland">Switzerland</option>
+            <option value="Taiwan">Taiwan</option>
+            <option value="Thailand">Thailand</option>
+            <option value="Turkey">Turkey</option>
+            <option value="United Arab Emirates">United Arab Emirates</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="United States">United States</option>
+            <option value="Venezuela">Venezuela</option>
+            <option value="Vietnam">Vietnam</option>
+            <option value="Other">Other</option>
+          </select>
+          <p class="field-error" id="countryError" hidden></p>
+        </div>
+      </div>
+
+      <h2 class="reg-section-title">CONTACT INFORMATION</h2>
+      <div class="form-group">
+        <label class="reg-label" for="email">Primary Email Address <span class="req">*</span></label>
+        <input type="email" id="email" class="reg-input" required maxlength="120" autocomplete="email">
+        <p class="field-error" id="emailError" hidden></p>
+      </div>
+      <div class="form-group">
+        <label class="reg-label" for="altEmail">Alternate Email Address</label>
+        <input type="email" id="altEmail" class="reg-input" placeholder="Optional">
+        <p class="field-error" id="altEmailError" hidden></p>
+      </div>
+      <div class="form-group">
+        <label class="reg-label" for="mobileCountry">Mobile Country Code <span class="req">*</span></label>
+        <select id="mobileCountry" class="reg-input reg-select">
+          <option value="">Select</option>
+          <option value="+93" data-placeholder="701234567" data-max="9" data-prefix="7">+93 (Afghanistan)</option>
+          <option value="+54" data-placeholder="91123456789" data-max="11" data-prefix="9">+54 (Argentina)</option>
+          <option value="+61" data-placeholder="412345678" data-max="9" data-prefix="4">+61 (Australia)</option>
+          <option value="+43" data-placeholder="6641234567" data-max="11" data-prefix="6">+43 (Austria)</option>
+          <option value="+973" data-placeholder="36123456" data-max="8" data-prefix="3">+973 (Bahrain)</option>
+          <option value="+880" data-placeholder="1712345678" data-max="10" data-prefix="1">+880 (Bangladesh)</option>
+          <option value="+32" data-placeholder="470123456" data-max="9" data-prefix="4">+32 (Belgium)</option>
+          <option value="+55" data-placeholder="11987654321" data-max="11" data-prefix="1">+55 (Brazil)</option>
+          <option value="+1" data-placeholder="5551234567" data-max="10" data-prefix="">+1 (Canada)</option>
+          <option value="+56" data-placeholder="912345678" data-max="9" data-prefix="9">+56 (Chile)</option>
+          <option value="+86" data-placeholder="13800138000" data-max="11" data-prefix="1">+86 (China)</option>
+          <option value="+57" data-placeholder="3001234567" data-max="10" data-prefix="3">+57 (Colombia)</option>
+          <option value="+420" data-placeholder="601123456" data-max="9" data-prefix="6">+420 (Czech Republic)</option>
+          <option value="+45" data-placeholder="20123456" data-max="8" data-prefix="2">+45 (Denmark)</option>
+          <option value="+593" data-placeholder="991234567" data-max="9" data-prefix="9">+593 (Ecuador)</option>
+          <option value="+20" data-placeholder="1001234567" data-max="10" data-prefix="1">+20 (Egypt)</option>
+          <option value="+358" data-placeholder="401234567" data-max="10" data-prefix="4">+358 (Finland)</option>
+          <option value="+33" data-placeholder="612345678" data-max="9" data-prefix="6">+33 (France)</option>
+          <option value="+49" data-placeholder="15123456789" data-max="12" data-prefix="1">+49 (Germany)</option>
+          <option value="+30" data-placeholder="6912345678" data-max="10" data-prefix="6">+30 (Greece)</option>
+          <option value="+852" data-placeholder="91234567" data-max="8" data-prefix="5,6,9">+852 (Hong Kong)</option>
+          <option value="+36" data-placeholder="201234567" data-max="9" data-prefix="2">+36 (Hungary)</option>
+          <option value="+91" data-placeholder="9876543210" data-max="10" data-prefix="6,7,8,9">+91 (India)</option>
+          <option value="+62" data-placeholder="8123456789" data-max="12" data-prefix="8">+62 (Indonesia)</option>
+          <option value="+353" data-placeholder="851234567" data-max="9" data-prefix="8">+353 (Ireland)</option>
+          <option value="+39" data-placeholder="3123456789" data-max="10" data-prefix="3">+39 (Italy)</option>
+          <option value="+81" data-placeholder="9012345678" data-max="11" data-prefix="7,8,9">+81 (Japan)</option>
+          <option value="+962" data-placeholder="790123456" data-max="9" data-prefix="7">+962 (Jordan)</option>
+          <option value="+254" data-placeholder="712345678" data-max="9" data-prefix="7">+254 (Kenya)</option>
+          <option value="+965" data-placeholder="50123456" data-max="8" data-prefix="5,6,9">+965 (Kuwait)</option>
+          <option value="+961" data-placeholder="71123456" data-max="8" data-prefix="3,7">+961 (Lebanon)</option>
+          <option value="+853" data-placeholder="66123456" data-max="8" data-prefix="6">+853 (Macau)</option>
+          <option value="+60" data-placeholder="123456789" data-max="10" data-prefix="1">+60 (Malaysia)</option>
+          <option value="+52" data-placeholder="5512345678" data-max="10" data-prefix="">+52 (Mexico)</option>
+          <option value="+31" data-placeholder="612345678" data-max="9" data-prefix="6">+31 (Netherlands)</option>
+          <option value="+64" data-placeholder="211234567" data-max="10" data-prefix="2">+64 (New Zealand)</option>
+          <option value="+234" data-placeholder="8012345678" data-max="10" data-prefix="7,8,9">+234 (Nigeria)</option>
+          <option value="+47" data-placeholder="41234567" data-max="8" data-prefix="4">+47 (Norway)</option>
+          <option value="+968" data-placeholder="92123456" data-max="8" data-prefix="7,9">+968 (Oman)</option>
+          <option value="+92" data-placeholder="3001234567" data-max="10" data-prefix="3">+92 (Pakistan)</option>
+          <option value="+51" data-placeholder="912345678" data-max="9" data-prefix="9">+51 (Peru)</option>
+          <option value="+63" data-placeholder="9123456789" data-max="10" data-prefix="9" selected>+63 (Philippines)</option>
+          <option value="+48" data-placeholder="512345678" data-max="9" data-prefix="5">+48 (Poland)</option>
+          <option value="+351" data-placeholder="912345678" data-max="9" data-prefix="9">+351 (Portugal)</option>
+          <option value="+974" data-placeholder="33123456" data-max="8" data-prefix="3,5,6,7">+974 (Qatar)</option>
+          <option value="+7" data-placeholder="9123456789" data-max="10" data-prefix="9">+7 (Russia)</option>
+          <option value="+966" data-placeholder="501234567" data-max="9" data-prefix="5">+966 (Saudi Arabia)</option>
+          <option value="+65" data-placeholder="91234567" data-max="8" data-prefix="8,9">+65 (Singapore)</option>
+          <option value="+27" data-placeholder="821234567" data-max="9" data-prefix="6,7,8">+27 (South Africa)</option>
+          <option value="+82" data-placeholder="1012345678" data-max="11" data-prefix="1">+82 (South Korea)</option>
+          <option value="+34" data-placeholder="612345678" data-max="9" data-prefix="6,7">+34 (Spain)</option>
+          <option value="+46" data-placeholder="701234567" data-max="10" data-prefix="7">+46 (Sweden)</option>
+          <option value="+41" data-placeholder="781234567" data-max="9" data-prefix="7">+41 (Switzerland)</option>
+          <option value="+886" data-placeholder="912345678" data-max="9" data-prefix="9">+886 (Taiwan)</option>
+          <option value="+66" data-placeholder="812345678" data-max="9" data-prefix="6,8,9">+66 (Thailand)</option>
+          <option value="+90" data-placeholder="5012345678" data-max="10" data-prefix="5">+90 (Turkey)</option>
+          <option value="+971" data-placeholder="501234567" data-max="9" data-prefix="5">+971 (United Arab Emirates)</option>
+          <option value="+44" data-placeholder="7911123456" data-max="11" data-prefix="7">+44 (United Kingdom)</option>
+          <option value="+1" data-placeholder="5551234567" data-max="10" data-prefix="">+1 (United States)</option>
+          <option value="+58" data-placeholder="4121234567" data-max="10" data-prefix="4">+58 (Venezuela)</option>
+          <option value="+84" data-placeholder="912345678" data-max="10" data-prefix="3,5,7,8,9">+84 (Vietnam)</option>
+        </select>
+        <p class="field-error" id="mobileCountryError" hidden></p>
+      </div>
+      <div class="form-group">
+        <label class="reg-label" for="mobileNumber">Mobile Number <span class="req">*</span></label>
+        <div class="reg-mobile-row">
+          <span class="reg-mobile-prefix" id="mobilePrefix">+63</span>
+          <input type="tel" id="mobileNumber" class="reg-input" placeholder="9123456789" maxlength="10" inputmode="numeric">
+        </div>
+        <p class="field-error" id="mobileNumberError" hidden></p>
+      </div>
+      <div class="reg-row">
+        <div class="form-group reg-col">
+          <label class="reg-label" for="homeTel">Home Tel No.</label>
+          <input type="tel" id="homeTel" class="reg-input" placeholder="Optional" maxlength="15" inputmode="numeric" autocomplete="off">
+          <p class="field-error" id="homeTelError" hidden></p>
+        </div>
+        <div class="form-group reg-col">
+          <label class="reg-label" for="officeTel">Office Tel No.</label>
+          <input type="tel" id="officeTel" class="reg-input" placeholder="Optional" maxlength="15" inputmode="numeric" autocomplete="off">
+          <p class="field-error" id="officeTelError" hidden></p>
+        </div>
+      </div>
+    </div>
+
+    
+    
+    <!-- Step 3: security questions -->
+    <div class="reg-card" id="step3" data-step-panel="3" hidden>
+      <h1 class="reg-title">Security Questions</h1>
+      <p class="reg-subtitle">In case you forget your password, you'll be asked to answer these. Keep the answers to yourself.</p>
+      <div class="reg-note">
+        <strong>Note:</strong> Items marked with asterisk(<span class="req">*</span>) are required.
+      </div>
+
+      <div class="sec-q-block">
+        <label class="reg-label" for="secQ1">Question 1 <span class="req">*</span></label>
+        <select id="secQ1" class="reg-input reg-select">
+          <option value="">Select</option>
+          <option value="What is the name of your first pet?">What is the name of your first pet?</option>
+          <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+          <option value="In what city were you born?">In what city were you born?</option>
+          <option value="What was the name of your elementary school?">What was the name of your elementary school?</option>
+          <option value="What is your favorite food?">What is your favorite food?</option>
+          <option value="What was your childhood nickname?">What was your childhood nickname?</option>
+        </select>
+        <p class="field-error" id="secQ1Error" hidden></p>
+        <div class="reg-row">
+          <div class="form-group reg-col">
+            <label class="reg-label" for="secA1">Answer <span class="req">*</span></label>
+            <input type="text" id="secA1" class="reg-input" autocomplete="off">
+            <p class="field-error" id="secA1Error" hidden></p>
+          </div>
+          <div class="form-group reg-col">
+            <label class="reg-label" for="secCA1">Confirm Answer <span class="req">*</span></label>
+            <input type="text" id="secCA1" class="reg-input" autocomplete="off">
+            <p class="field-error" id="secCA1Error" hidden></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec-q-block">
+        <label class="reg-label" for="secQ2">Question 2 <span class="req">*</span></label>
+        <select id="secQ2" class="reg-input reg-select">
+          <option value="">Select</option>
+          <option value="What is the name of your first pet?">What is the name of your first pet?</option>
+          <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+          <option value="In what city were you born?">In what city were you born?</option>
+          <option value="What was the name of your elementary school?">What was the name of your elementary school?</option>
+          <option value="What is your favorite food?">What is your favorite food?</option>
+          <option value="What was your childhood nickname?">What was your childhood nickname?</option>
+        </select>
+        <p class="field-error" id="secQ2Error" hidden></p>
+        <div class="reg-row">
+          <div class="form-group reg-col">
+            <label class="reg-label" for="secA2">Answer <span class="req">*</span></label>
+            <input type="text" id="secA2" class="reg-input" autocomplete="off">
+            <p class="field-error" id="secA2Error" hidden></p>
+          </div>
+          <div class="form-group reg-col">
+            <label class="reg-label" for="secCA2">Confirm Answer <span class="req">*</span></label>
+            <input type="text" id="secCA2" class="reg-input" autocomplete="off">
+            <p class="field-error" id="secCA2Error" hidden></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec-q-block">
+        <label class="reg-label" for="secQ3">Question 3 <span class="req">*</span></label>
+        <select id="secQ3" class="reg-input reg-select">
+          <option value="">Select</option>
+          <option value="What is the name of your first pet?">What is the name of your first pet?</option>
+          <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+          <option value="In what city were you born?">In what city were you born?</option>
+          <option value="What was the name of your elementary school?">What was the name of your elementary school?</option>
+          <option value="What is your favorite food?">What is your favorite food?</option>
+          <option value="What was your childhood nickname?">What was your childhood nickname?</option>
+        </select>
+        <p class="field-error" id="secQ3Error" hidden></p>
+        <div class="reg-row">
+          <div class="form-group reg-col">
+            <label class="reg-label" for="secA3">Answer <span class="req">*</span></label>
+            <input type="text" id="secA3" class="reg-input" autocomplete="off">
+            <p class="field-error" id="secA3Error" hidden></p>
+          </div>
+          <div class="form-group reg-col">
+            <label class="reg-label" for="secCA3">Confirm Answer <span class="req">*</span></label>
+            <input type="text" id="secCA3" class="reg-input" autocomplete="off">
+            <p class="field-error" id="secCA3Error" hidden></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    
+    <!-- Step 4: login credentials -->
+    <div class="reg-card" id="step4" data-step-panel="4" hidden>
+      <h1 class="reg-title">Set your log-in details</h1>
+      <p class="reg-subtitle">Please enter your preferred ID and password.</p>
+      <div class="reg-note">
+        <strong>Note:</strong> Items marked with asterisk(<span class="req">*</span>) are required. Passwords must be 7–15 characters long, include uppercase and lowercase letters, and contain at least one number.
+      </div>
+
+      <div class="form-group">
+        <label class="reg-label" for="iaccessId">iAccess ID <span class="req">*</span></label>
+        <input type="text" id="iaccessId" class="reg-input" placeholder="6–20 alphanumeric characters" maxlength="20" autocomplete="username">
+        <p class="field-error" id="iaccessIdError" hidden></p>
+      </div>
+      <div class="form-group">
+        <label class="reg-label" for="regPassword">Password <span class="req">*</span></label>
+        <div class="reg-password-wrap">
+          <input type="password" id="regPassword" class="reg-input" required minlength="7" maxlength="15" maxlength="15" autocomplete="new-password">
+          <button type="button" class="eye-toggle reg-eye-toggle" id="regEyeToggle" aria-label="Show password" aria-pressed="false">
+            <img src="images/login-eye-off.png" alt="" id="regEyeIcon" width="22" height="22">
+          </button>
+        </div>
+        <p class="field-error" id="regPasswordError" hidden></p>
+      </div>
+      <div class="form-group">
+        <label class="reg-label" for="regPasswordConfirm">Confirm password <span class="req">*</span></label>
+        <div class="reg-password-wrap">
+          <input type="password" id="regPasswordConfirm" class="reg-input" required minlength="7" maxlength="15" maxlength="15" autocomplete="new-password">
+          <button type="button" class="eye-toggle reg-eye-toggle" id="regEyeToggleConfirm" aria-label="Show password" aria-pressed="false">
+            <img src="images/login-eye-off.png" alt="" id="regEyeIconConfirm" width="22" height="22">
+          </button>
+        </div>
+        <p class="field-error" id="regPasswordConfirmError" hidden></p>
+      </div>
+    </div>
+
+    
+    
+    <!-- Step 5: review, captcha, terms -->
+    <div class="reg-card reg-review-card" id="step5" data-step-panel="5" hidden>
+      <div class="reg-review-layout">
+        <div class="reg-review-left">
+          <h1 class="reg-title">Review your information</h1>
+          <p class="reg-subtitle">Please review the information below, then click "Confirm."</p>
+          <div class="reg-note">
+            <strong>Note:</strong> Check every section carefully — you won't be able to edit this information after submitting.
+          </div>
+          <nav class="reg-review-nav" aria-label="Review sections">
+            <button type="button" class="reg-review-nav-item active" data-review-section="account">
+              <span class="reg-review-nav-num">1</span>
+              <span class="reg-review-nav-text">
+                <strong>Account</strong>
+                <small>Account verification details</small>
+              </span>
+              <span class="reg-review-nav-arrow">›</span>
+            </button>
+            <button type="button" class="reg-review-nav-item" data-review-section="personal">
+              <span class="reg-review-nav-num">2</span>
+              <span class="reg-review-nav-text">
+                <strong>Personal</strong>
+                <small>Profile details, address &amp; contacts</small>
+              </span>
+              <span class="reg-review-nav-arrow">›</span>
+            </button>
+            <button type="button" class="reg-review-nav-item" data-review-section="login">
+              <span class="reg-review-nav-num">3</span>
+              <span class="reg-review-nav-text">
+                <strong>Log-in</strong>
+                <small>Credentials setup</small>
+              </span>
+              <span class="reg-review-nav-arrow">›</span>
+            </button>
+          </nav>
+        </div>
+
+        <div class="reg-review-right">
+          
+          
+          <div class="reg-summary-panel" id="reviewAccount" data-review-panel="account">
+            <div class="reg-summary-header">
+              <h2>Account Verification Details</h2>
+              <button type="button" class="reg-edit-btn" data-edit-step="1">EDIT</button>
+            </div>
+            <dl class="reg-summary-dl">
+              <div><dt>ATM Account No.:</dt><dd id="sumAtmAccount">—</dd></div>
+              <div><dt>JAI (Joint Account Indicator):</dt><dd id="sumJai">—</dd></div>
+              <div><dt>ATM PIN:</dt><dd id="sumAtmPin">—</dd></div>
+              <div><dt>Enable Fund Transfer?</dt><dd id="sumFundTransfer">—</dd></div>
+            </dl>
+          </div>
+
+          
+          <div class="reg-summary-panel" id="reviewPersonal" data-review-panel="personal" hidden>
+            <div class="reg-summary-header">
+              <h2>Personal Information</h2>
+              <button type="button" class="reg-edit-btn" data-edit-step="2">EDIT</button>
+            </div>
+            <div class="reg-summary-block">
+              <h3 class="reg-summary-sub">PERSONAL DETAILS</h3>
+              <dl class="reg-summary-dl">
+                <div><dt>Name:</dt><dd id="sumName">—</dd></div>
+                <div><dt>Mother's Maiden Name:</dt><dd id="sumMaiden">—</dd></div>
+                <div><dt>Spouse's Full Name:</dt><dd id="sumSpouse">—</dd></div>
+                <div><dt>Gender:</dt><dd id="sumGender">—</dd></div>
+                <div><dt>Civil Status:</dt><dd id="sumCivil">—</dd></div>
+                <div><dt>Birthday:</dt><dd id="sumBirthday">—</dd></div>
+              </dl>
+            </div>
+            <div class="reg-summary-block">
+              <h3 class="reg-summary-sub">ADDRESS</h3>
+              <dl class="reg-summary-dl">
+                <div><dt>Complete Address:</dt><dd id="sumAddress">—</dd></div>
+              </dl>
+            </div>
+            <div class="reg-summary-block">
+              <h3 class="reg-summary-sub">CONTACT INFORMATION</h3>
+              <dl class="reg-summary-dl">
+                <div><dt>Email Address:</dt><dd id="sumEmail">—</dd></div>
+                <div><dt>Alternate Email:</dt><dd id="sumAltEmail">—</dd></div>
+                <div><dt>Mobile Number:</dt><dd id="sumMobile">—</dd></div>
+                <div><dt>Home Tel No.:</dt><dd id="sumHomeTel">—</dd></div>
+                <div><dt>Office Tel No.:</dt><dd id="sumOfficeTel">—</dd></div>
+              </dl>
+            </div>
+          </div>
+
+          
+          <div class="reg-summary-panel" id="reviewLogin" data-review-panel="login" hidden>
+            <div class="reg-summary-header">
+              <h2>Account being Registered</h2>
+              <button type="button" class="reg-edit-btn" data-edit-step="4">EDIT</button>
+            </div>
+            <dl class="reg-summary-dl">
+              <div><dt>iAccess ID:</dt><dd id="sumIaccessId">—</dd></div>
+            </dl>
+
+            
+            <!-- Simulated reCAPTCHA flow -->
+            <div class="reg-captcha" id="regCaptcha" aria-label="Security check">
+              
+              <div class="reg-captcha-bar" id="captchaBar">
+                <button type="button" class="reg-captcha-check" id="captchaCheckBtn" aria-pressed="false" aria-label="I'm not a robot">
+                  <span class="reg-captcha-box" id="captchaBox"></span>
+                </button>
+                <span class="reg-captcha-label">I'm not a robot</span>
+                <div class="reg-captcha-brand-wrap">
+                  <img src="images/register-recaptcha.png" alt="" class="reg-captcha-logo" width="36" height="36">
+                  <span class="reg-captcha-brand-text">reCAPTCHA</span>
+                </div>
+              </div>
+              
+              <div class="reg-captcha-loading" id="captchaLoading" hidden>
+                <span class="reg-captcha-spinner" aria-hidden="true"></span>
+                <span>Verifying…</span>
+              </div>
+              
+              <div class="reg-captcha-challenge" id="captchaChallenge" hidden>
+                <p class="reg-captcha-challenge-title">Type the characters you see</p>
+                <div class="reg-captcha-code" id="captchaCode" aria-hidden="true"></div>
+                <button type="button" class="reg-captcha-refresh" id="captchaRefresh" aria-label="New code">↻</button>
+                <input type="text" id="captchaAnswer" class="reg-input reg-captcha-input" placeholder="Enter the code" autocomplete="off" autocapitalize="off" spellcheck="false">
+                <button type="button" class="reg-captcha-verify-btn" id="captchaVerifyBtn">Verify</button>
+              </div>
+              <p class="reg-captcha-success" id="captchaSuccess" hidden>Verified</p>
+            </div>
+            <p class="field-error" id="recaptchaError" hidden></p>
+
+            <label class="reg-terms-agree">
+              <input type="checkbox" id="finalTermsAgree">
+              <span>I have read and agree to the <a href="#" id="reviewTermsLink">Terms and Conditions</a></span>
+            </label>
+            <p class="field-error" id="finalTermsError" hidden></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    
+    <!-- Shared Back / Continue controls -->
+    <div class="reg-nav-buttons" id="regNavButtons">
+      <button type="button" class="reg-btn-back" id="regBackBtn">Back</button>
+      <button type="button" class="reg-btn-continue" id="regContinueBtn">Continue</button>
+    </div>
+  </main>
+
+  
+  
+  <!-- JAI explanation popover -->
+  <div class="jai-popover" id="jaiPopover" hidden role="dialog" aria-labelledby="jaiPopoverTitle">
+    <button type="button" class="jai-popover-close" id="jaiPopoverClose" aria-label="Close">&times;</button>
+    <h3 id="jaiPopoverTitle">For JAI (Joint Account Indicator)</h3>
+    <ul>
+      <li>For individual account, the JAI is <strong>"0"</strong></li>
+      <li>For joint account, the JAI is <strong>"1"</strong> or <strong>"2"</strong>.</li>
+    </ul>
+    <p>Please confirm with your branch of account or via Customer Care Hotline.</p>
+    <p class="jai-popover-note">LANDBANK Regular ATM Cards also have the JAI at the lower right hand corner.</p>
+    <img src="images/register-jai.png" alt="ATM card showing JAI location at lower right corner" class="jai-card-img">
+  </div>
+
+  
+  
+  <!-- Terms modal (Continue stays disabled until agree) -->
+  <div class="modal-overlay" id="termsModal" role="dialog" aria-modal="true" aria-labelledby="termsModalTitle">
+    <div class="modal tc-modal">
+      <div class="tc-modal-header">
+        <div class="tc-title-row">
+          <img src="images/tc-logo-icon.png" alt="" class="tc-logo-icon" width="40" height="40">
+          <h2 id="termsModalTitle">Terms and conditions</h2>
+        </div>
+      </div>
+      <div class="tc-modal-body">
+        <section class="tc-section">
+          <h3>Accessibility &amp; Security</h3>
+          <p>Three wrong password attempts locks your ID. Inactive sessions auto-log-out. Service may be unavailable during maintenance.</p>
+        </section>
+        <section class="tc-section">
+          <h3>Your responsibilities</h3>
+          <p>Keep your ID, password and OTP confidential. Report unauthorized activity within 20 days. Maintain sufficient balance for scheduled transactions.</p>
+        </section>
+        <section class="tc-section">
+          <h3>Bank's rights</h3>
+          <p>We may suspend access, decline transactions, or update fees and terms with notice. Continued use means you accept updates.</p>
+        </section>
+        <section class="tc-section">
+          <h3>Data privacy</h3>
+          <p>Your data is processed per the Data Privacy Act and may be shared with service providers, partners, or regulators as required by law. You may withdraw consent, though this may limit service.</p>
+        </section>
+      </div>
+      <div class="modal-footer tc-modal-footer">
+        <a href="terms-and-conditions.html?from=registration" class="tc-full-link" id="tcFullLink" target="_blank" rel="opener">
+          <img src="images/tc-link-icon.png" alt="" width="16" height="16">
+          Read the full Terms and Conditions
+        </a>
+        <label class="reg-tc-agree-label">
+          <input type="checkbox" id="tcAgreeCheckbox">
+          <span>I have read the summary and the full Terms and Conditions, and I agree.</span>
+        </label>
+        <button type="button" class="btn-tc-continue" id="modalCloseBtn" disabled>Continue</button>
+      </div>
+    </div>
+  </div>
+
+  
+  
+  <!-- Registration success overlay -->
+  <div class="modal-overlay" id="regSuccessModal" role="dialog" aria-modal="true">
+    <div class="modal feature-modal">
+      <div class="feature-modal-body" style="text-align:center;">
+        <h2 style="color:var(--primary-green);">Registration Submitted</h2>
+        <p id="regSuccessMsg">Your iAccess registration has been received. You will receive a confirmation once your account is activated.</p>
+        <button type="button" class="btn-close-modal" id="regSuccessClose">Return to Login Page</button>
+      </div>
+    </div>
+  </div>
+
+  
+  
+  <!-- Site footer -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <a href="homepage.html" class="logo-link">
+          <img src="images/landbank-logo-icon.png" alt="LANDBANK" class="footer-logo">
+        </a>
+        <a href="homepage.html" class="logo-link">
+          <img src="images/landbank-text-logo.png" alt="LANDBANK" class="footer-text-logo">
+        </a>
+      </div>
+      <div class="footer-middle">
+        <div class="care-header">
+          <img src="images/location-pin-icon.png" alt="Location" class="pin-icon">
+          <h3>LANDBANK Customer Care Center</h3>
+        </div>
+        <div class="care-details">
+          <div class="care-item">
+            <img src="images/phone-call-icon.png" alt="Phone" class="care-icon">
+            <span>
+              <a href="tel:+63284057000">(02) 8405-7000</a> (NCR) or
+              <a href="tel:1800104057000">1-800-10-405-7000</a> (PLDT Domestic Toll Free/Outside NCR)
+            </span>
+          </div>
+          <div class="care-item">
+            <img src="images/email-envelope-icon.png" alt="Email" class="care-icon">
+            <a href="homepage.html#sv-contact-panel" class="footer-care-email" target="_blank" rel="noopener noreferrer">customercare@landbank.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-right">
+        <p>Copyright © 2026<br>Land Bank of the Philippines.<br>All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  
+  
+  <!-- Scroll to top -->
+  <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top" type="button" hidden>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M12 5l-7 7h4.5v7h5v-7H19l-7-7z" fill="currentColor"/>
+    </svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>

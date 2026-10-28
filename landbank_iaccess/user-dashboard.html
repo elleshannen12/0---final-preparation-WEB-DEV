@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="images/landbank-logo-icon.png" />
+    <title>Dashboard | LANDBANK iAccess</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      try {
+        if (localStorage.getItem("iAccessSidebarCollapsed") === "true" && window.matchMedia("(min-width: 901px)").matches) {
+          document.documentElement.classList.add("sidebar-collapsed-preload");
+        }
+      } catch (error) {
+        console.error("Unable to restore sidebar state.", error);
+      }
+    </script>
+    <link rel="stylesheet" href="user-style.css?v=4" />
+  </head>
+  <body>
+    <script>
+      try {
+        document.body.dataset.theme = localStorage.getItem("landbankThemeMode") === "dark" ? "dark" : "light";
+      } catch (error) {
+        document.body.dataset.theme = "light";
+        console.error("Unable to restore color theme.", error);
+      }
+    </script>
+    <!-- Icon sprite (Lucide-style outline icons) -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <symbol id="i-home" viewBox="0 0 24 24">
+        <path
+          d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z M9 22V12h6v10"
+        />
+      </symbol>
+      <symbol id="i-history" viewBox="0 0 24 24">
+        <path d="M4 7h16 M4 12h9 M4 17h16" />
+      </symbol>
+      <symbol id="i-transfer" viewBox="0 0 24 24">
+        <path d="M8 3L4 7l4 4 M4 7h16 M16 21l4-4-4-4 M20 17H4" />
+      </symbol>
+      <symbol id="i-bank" viewBox="0 0 24 24">
+        <path
+          d="M3 22h18 M6 18v-7 M10 18v-7 M14 18v-7 M18 18v-7 M12 2l8 5H4z"
+        />
+      </symbol>
+      <symbol id="i-card" viewBox="0 0 24 24">
+        <path
+          d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z M2 10h20 M6 15h3"
+        />
+      </symbol>
+      <symbol id="i-settings" viewBox="0 0 24 24">
+        <path
+          d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.76 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.24 9c.4.16.84.2 1.25.2H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"
+        />
+      </symbol>
+      <symbol id="i-support" viewBox="0 0 24 24">
+        <path
+          d="M12 3a9 9 0 0 0-9 9c0 1.6.4 3 1.2 4.3L3 21l4.7-1.2A9 9 0 1 0 12 3z M8.5 12h.01 M12 12h.01 M15.5 12h.01"
+        />
+      </symbol>
+      <symbol id="i-logout" viewBox="0 0 24 24">
+        <path
+          d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4 M16 17l5-5-5-5 M21 12H9"
+        />
+      </symbol>
+      <symbol id="i-search" viewBox="0 0 24 24">
+        <path d="M11 3a8 8 0 1 0 0 16 8 8 0 0 0 0-16z M21 21l-4.3-4.3" />
+      </symbol>
+      <symbol id="i-bell" viewBox="0 0 20 20">
+        <path d="M10 2a5 5 0 00-5 5v3.5l-1.5 2.5h13L15 10.5V7a5 5 0 00-5-5z M8 15a2 2 0 004 0" />
+      </symbol>
+      <symbol id="i-eye" viewBox="0 0 24 24">
+        <path
+          d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12z M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"
+        />
+      </symbol>
+      <symbol id="i-eye-off" viewBox="0 0 24 24">
+        <path
+          d="M3 3l18 18M10.6 10.6a2 2 0 0 0 2.8 2.8M9.9 5.2A11.5 11.5 0 0 1 12 5c7 0 10 7 10 7a16.5 16.5 0 0 1-3.1 4.1M6.2 6.2C3.5 8 2 12 2 12s3 7 10 7c1 0 2-.2 2.9-.5"
+        />
+      </symbol>
+      <symbol id="i-send" viewBox="0 0 24 24">
+        <path d="M22 2L11 13 M22 2l-7 20-4-9-9-4z" />
+      </symbol>
+      <symbol id="i-request" viewBox="0 0 24 24">
+        <path
+          d="M12 3a5 5 0 1 0 0 10 5 5 0 0 0 0-10z M12 5.5v5 M13.6 6.6a1.6 1.2 0 0 0-3.2 0c0 1.6 3.2.8 3.2 2.4a1.6 1.2 0 0 1-3.2 0 M2 17h4l3 2h5a2 2 0 0 0 0-4h-3 M14 17l5.5-2.5a2 2 0 0 1 2 3.4L14 22H8"
+        />
+      </symbol>
+      <symbol id="i-qr" viewBox="0 0 24 24">
+        <path
+          d="M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h3v3h-3z M21 14v7h-4 M14 21h.01"
+        />
+      </symbol>
+      <symbol id="i-upload" viewBox="0 0 24 24">
+        <path
+          d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z M12 16v-6 M9 12.5l3-3 3 3"
+        />
+      </symbol>
+      <symbol id="i-download" viewBox="0 0 24 24">
+        <path
+          d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4 M7 10l5 5 5-5 M12 15V3"
+        />
+      </symbol>
+      <symbol id="i-up" viewBox="0 0 24 24">
+        <path d="M12 19V5 M5 12l7-7 7 7" />
+      </symbol>
+      <symbol id="i-down" viewBox="0 0 24 24">
+        <path d="M12 5v14 M19 12l-7 7-7-7" />
+      </symbol>
+      <symbol id="i-left" viewBox="0 0 24 24">
+        <path d="M15 18l-6-6 6-6" />
+      </symbol>
+      <symbol id="i-right" viewBox="0 0 24 24">
+        <path d="M9 18l6-6-6-6" />
+      </symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24">
+        <path d="M4 6h16 M4 12h16 M4 18h16" />
+      </symbol>
+    </svg>
+
+    <div class="app">
+      <!-- Sidebar -->
+      <aside class="side" id="side">
+        <div class="logo">
+          <svg width="66" height="66" viewBox="0 0 66 66" aria-hidden="true">
+            <circle cx="33" cy="33" r="30" fill="#fff" />
+            <path
+              d="M33 10c8 7 12 15 8 24-2 5-5 8-8 12-3-4-6-7-8-12-4-9 0-17 8-24z"
+              fill="#026D3D"
+            />
+            <path
+              d="M12 40c8-2 14 2 21 10M54 40c-8-2-14 2-21 10"
+              stroke="#026D3D"
+              stroke-width="3"
+              fill="none"
+            />
+            <path d="M33 26v26" stroke="#fff" stroke-width="2" />
+          </svg>
+          <div class="t"><b>LANDBANK</b><i>iAccess</i></div>
+        </div>
+
+        <nav class="nav">
+          <a href="user-dashboard.html" class="ni on"
+            ><svg class="ic" width="24" height="24"><use href="#i-home" /></svg
+            >Dashboard</a
+          >
+          <a href="user-transactionhistory.html" class="ni">
+            <svg class="ic" width="24" height="24">
+              <use href="#i-history" /></svg
+            >Transaction History</a
+          >
+          <a href="user-fundtransfer.html" class="ni">
+            <svg class="ic" width="24" height="24">
+              <use href="#i-transfer" /></svg
+            >Transfer Funds
+          </a>
+          <a href="user-billspayment.html" class="ni">
+            <svg class="ic" width="24" height="24"><use href="#i-card" /></svg
+            >Bills Payment
+          </a>
+          <a href="user-settings.html" class="ni">
+            <svg class="ic" width="24" height="24">
+              <use href="#i-settings" /></svg
+            >Settings</a
+          >
+          <a class="ni" href="user-support.html">
+            <svg class="ic" width="24" height="24"><use href="#i-support" /></svg
+            >Customer support
+          </a>
+        </nav>
+
+        <div class="sp"></div>
+
+        <div class="bot">
+        </div>
+      </aside>
+
+      <div class="main">
+        <!-- Top header -->
+        <header class="hd">
+          <button class="mb" id="menuBtn" aria-label="Menu">
+            <svg class="ic" width="24" height="24"><use href="#i-menu" /></svg>
+          </button>
+          <div class="hr">
+            <div class="nw">
+              <button
+                class="bell"
+                id="bell"
+                aria-label="Notifications"
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
+                <svg class="ic" width="24" height="24">
+                  <use href="#i-bell" /></svg
+                ><span class="notification-badge" aria-hidden="true">2</span>
+              </button>
+              <div class="np" id="np" role="dialog" aria-label="Notifications">
+                <div class="np-h">
+                  <b>Notifications</b
+                  ><button id="markAll">Mark all as read</button>
+                </div>
+                <div class="np-list">
+                  <button class="np-item unread">
+                    <span class="c"
+                      ><svg class="ic" width="20" height="20">
+                        <use href="#i-down" /></svg></span
+                    ><span
+                      ><p>Money received</p>
+                      <small
+                        >+ ₱20,000.00 from Tuition Allowance · 25 Jan, 12:30
+                        AM</small
+                      ></span
+                    >
+                  </button>
+                  <button class="np-item unread">
+                    <span class="c"
+                      ><svg class="ic" width="20" height="20">
+                        <use href="#i-card" /></svg></span
+                    ><span
+                      ><p>Subscription payment</p>
+                      <small
+                        >Spotify Subscription – ₱50.00 was charged · 28 Jan,
+                        12:30 AM</small
+                      ></span
+                    >
+                  </button>
+                  <button class="np-item">
+                    <span class="c"
+                      ><svg class="ic" width="20" height="20">
+                        <use href="#i-up" /></svg></span
+                    ><span
+                      ><p>Load Service</p>
+                      <small
+                        >₱200.00 was deducted from your card · 22 Jan, 12:30
+                        AM</small
+                      ></span
+                    >
+                  </button>
+                  <button class="np-item">
+                    <span class="c"
+                      ><svg class="ic" width="20" height="20">
+                        <use href="#i-up" /></svg></span
+                    ><span
+                      ><p>Netflix Subscription</p>
+                      <small
+                        >₱560.00 was deducted from your card · 20 Jan, 12:30
+                        AM</small
+                      ></span
+                    >
+                  </button>
+                </div>
+              </div>
+            </div>
+            <span class="vd"></span>
+            <div class="profile-menu-wrap">
+              <button class="pf" id="profileMenuBtn" type="button" aria-haspopup="menu" aria-expanded="false">
+                <span class="av" aria-hidden="true">JD</span>
+                <span class="profile-name"><b>Juan De La Cruz</b><small>09********38</small></span>
+                <svg class="profile-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg>
+              </button>
+              <div class="profile-menu" id="profileMenu" role="menu" hidden>
+                <a href="user-settings.html" role="menuitem">My Profile</a>
+                <a class="profile-signout" href="homepage.html" role="menuitem">Sign out</a>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Content -->
+        <main class="ct">
+          <h1 style="margin-bottom: 1.25rem;">Welcome Back! Juan De La Cruz</h1>
+
+          <div class="row">
+            <!-- Balance card -->
+            <div class="bal" id="accountSummary">
+              <div class="l">
+                Balance
+                <button id="eye" type="button" aria-label="Hide balance" aria-pressed="true">
+                  <svg class="ic" width="14" height="14">
+                    <use href="#i-eye" />
+                  </svg>
+                </button>
+              </div>
+              <div class="amt" id="amt">₱50,000</div>
+              <div class="cols">
+                <div>
+                  <div class="lab">Card No#</div>
+                  <div class="val">7777-777-7777</div>
+                </div>
+                <div>
+                  <div class="lab">Valid Thru</div>
+                  <div class="val">12/29</div>
+                </div>
+              </div>
+              <span class="chip"></span>
+              <svg class="contactless" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8 8a5.5 5.5 0 0 1 0 8M11 5a10 10 0 0 1 0 14M14 2a14 14 0 0 1 0 20" />
+              </svg>
+              <button class="cash" id="cashInBtn" type="button">+ CASH IN</button>
+              <span class="visa">VISA</span>
+            </div>
+
+            <!-- Quick actions -->
+            <div class="card qa">
+              <!-- CHANGE: Send Money opens Fund Transfer on the LANDBANK Account option -->
+              <a class="qb" href="user-fundtransfer.html?type=lb">
+                <span class="ib"
+                  ><svg class="ic" width="24" height="24">
+                    <use href="#i-send" /></svg></span
+                >Send Money
+              </a>
+              <a class="qb" href="user-billspayment.html">
+                <span class="ib"
+                  ><svg class="ic" width="24" height="24">
+                    <use href="#i-card" /></svg></span
+                >Pay Bills
+              </a>
+              <!-- CHANGE: renamed "Transfer Funds" to "Bank Transfer"; opens Fund Transfer on the Other Bank option -->
+              <a class="qb" href="user-fundtransfer.html?type=ob">
+                <span class="ib"
+                  ><svg class="ic" width="24" height="24">
+                    <use href="#i-bank" /></svg></span
+                >Bank Transfer
+              </a>
+              <button class="qb" id="requestMoneyBtn" type="button">
+                <span class="ib"
+                  ><svg class="ic" width="24" height="24">
+                    <use href="#i-request" /></svg></span
+                >Request Money
+              </button>
+            </div>
+
+            <!-- Scan & Pay -->
+            <div class="card sc">
+              <h3>Scan &amp; Pay</h3>
+              <p>Use QR Ph to send money or pay merchants instantly</p>
+              <div class="drop">
+                <span class="ib"
+                  ><svg class="ic" width="22" height="22">
+                    <use href="#i-qr" /></svg
+                ></span>
+                <span
+                  >Drop a QR Ph code here, or use your camera to scan a merchant
+                  or payee code.</span
+                >
+              </div>
+              <div class="btns">
+                <button class="p">
+                  <svg class="ic" width="16" height="16">
+                    <use href="#i-upload" /></svg
+                  >Upload
+                </button>
+                <button>
+                  <svg class="ic" width="16" height="16">
+                    <use href="#i-qr" /></svg
+                  >Generate QR
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <h2>Recent Transactions</h2>
+          <div class="card tx">
+            <label class="ts">
+              <svg class="ic" width="18" height="18">
+                <use href="#i-search" />
+              </svg>
+              <input type="text" id="txSearch" placeholder="Search for recent transactions" />
+            </label>
+
+            <div class="tw">
+              <div class="tbl">
+                <div class="g th">
+                  <div>Description</div>
+                  <div>Transaction ID</div>
+                  <div>Type</div>
+                  <div>Card</div>
+                  <div>Date &amp; Time</div>
+                  <div>Amount</div>
+                  <div>Receipt</div>
+                </div>
+
+                <div class="g tr">
+                  <div class="d">
+                    <span class="c"
+                      ><svg class="ic" width="24" height="24">
+                        <use href="#i-up" /></svg></span
+                    >Spotify Subscription
+                  </div>
+                  <div>#12345681</div>
+                  <div>Subscription</div>
+                  <div>1234 ****</div>
+                  <div>28 Jan, 12:30 AM</div>
+                  <div class="neg">- ₱50.00</div>
+                  <div>
+                    <button class="dl">
+                      <svg class="ic" width="24" height="24">
+                        <use href="#i-download" /></svg
+                      >Download
+                    </button>
+                  </div>
+                </div>
+
+                <div class="g tr">
+                  <div class="d">
+                    <span class="c"
+                      ><svg class="ic" width="24" height="24">
+                        <use href="#i-down" /></svg></span
+                    >Tuition Allowance
+                  </div>
+                  <div>#12345680</div>
+                  <div>Transfer</div>
+                  <div>1234 ****</div>
+                  <div>25 Jan, 12:30 AM</div>
+                  <div class="pos">+ ₱20,000.00</div>
+                  <div>
+                    <button class="dl">
+                      <svg class="ic" width="24" height="24">
+                        <use href="#i-download" /></svg
+                      >Download
+                    </button>
+                  </div>
+                </div>
+
+                <div class="g tr">
+                  <div class="d">
+                    <span class="c"
+                      ><svg class="ic" width="24" height="24">
+                        <use href="#i-up" /></svg></span
+                    >Load Service
+                  </div>
+                  <div>#12345679</div>
+                  <div>Service</div>
+                  <div>1234 ****</div>
+                  <div>22 Jan, 12:30 AM</div>
+                  <div class="neg">- ₱200.00</div>
+                  <div>
+                    <button class="dl">
+                      <svg class="ic" width="24" height="24">
+                        <use href="#i-download" /></svg
+                      >Download
+                    </button>
+                  </div>
+                </div>
+
+                <div class="g tr">
+                  <div class="d">
+                    <span class="c"
+                      ><svg class="ic" width="24" height="24">
+                        <use href="#i-up" /></svg></span
+                    >Netflix Subscription
+                  </div>
+                  <div>#12345678</div>
+                  <div>Transfer</div>
+                  <div>1234 ****</div>
+                  <div>20 Jan, 12:30 AM</div>
+                  <div class="neg">- ₱560.00</div>
+                  <div>
+                    <button class="dl">
+                      <svg class="ic" width="24" height="24">
+                        <use href="#i-download" /></svg
+                      >Download
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CHANGE: shown when the search finds no matching transactions -->
+            <p id="txEmpty" hidden style="text-align:center;padding:1rem 0;color:#7d8481;">
+              No transactions found.
+            </p>
+
+            <div class="pg">
+              <a class="see-all-transactions" href="user-transactionhistory.html">
+                See all transactions
+                <svg class="ic" width="16" height="16"><use href="#i-right" /></svg>
+              </a>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <dialog class="cash-in-dialog" id="cashInDialog" aria-labelledby="cashInTitle">
+      <form id="cashInForm">
+        <h2 id="cashInTitle">Cash in</h2>
+        <p>Choose how much you want to add to your account.</p>
+        <label class="cash-in-field" for="cashInAmount">
+          Amount (PHP)
+          <input id="cashInAmount" name="amount" type="number" min="1" step="0.01" placeholder="0.00" required />
+        </label>
+        <div class="cash-in-actions">
+          <button class="cash-in-cancel" id="cancelCashIn" type="button">Cancel</button>
+          <button class="cash-in-continue" type="submit">Continue to payment</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="cash-in-dialog" id="requestQrDialog" aria-labelledby="requestQrTitle">
+      <form method="dialog">
+        <h2 id="requestQrTitle">Request Money</h2>
+        <p>Share this QR code to receive a payment.</p>
+        <div style="display:flex;justify-content:center;padding:0.5rem 0 0.75rem;">
+          <img id="requestQrImage" alt="QR code for requesting money" style="width:220px;height:220px;display:block;background:#fff;border-radius:12px;padding:12px;box-shadow:0 10px 30px rgba(2,109,61,0.12);" />
+        </div>
+        <div style="text-align:center;line-height:1.6;">
+          <strong>Juan De La Cruz</strong><br />
+          <small>LANDBANK Savings • 09********38</small>
+        </div>
+        <div class="cash-in-actions" style="margin-top:1.2rem;">
+          <button class="cash-in-continue" type="submit">Close</button>
+        </div>
+      </form>
+    </dialog>
+
+    <!-- Tiny demo interactions (optional) -->
+      <script src="user-script.js?v=4" defer></script>
+</body>
+</html>

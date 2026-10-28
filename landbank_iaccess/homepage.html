@@ -1,0 +1,664 @@
+
+
+<!-- LANDBANK iAccess marketing homepage -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LANDBANK iAccess</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/png" href="images/landbank-logo-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+  
+  <!-- Fixed site header -->
+  <header class="main-header">
+    <div class="header-top">
+      <div class="header-left">
+        
+                <!-- Mobile menu toggle -->
+                <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+          <span class="hamburger-icon">☰</span>
+        </button>
+        <a href="homepage.html" class="logo-link">
+          <img src="images/landbank-text-logo.png" alt="LANDBANK" class="landbank-text-logo">
+        </a>
+        <span class="header-divider">|</span>
+        <img src="images/overseas-filipino-bank-logo.png" alt="Overseas Filipino Bank" class="ofb-logo">
+      </div>
+      <div class="header-right">
+        <img src="images/iaccess-lock-logo.png" alt="iAccess" class="iaccess-logo">
+      </div>
+    </div>
+    
+        <!-- Desktop sub-nav for in-page sections -->
+        <nav class="sub-nav" id="subNav">
+      <div class="sub-nav-inner">
+        <ul>
+          <li><a href="#about" data-view="about">About Us</a></li>
+          <li><a href="#faqs" data-view="faqs">FAQs</a></li>
+          <li><a href="#security-policy" data-view="security-policy">Security Policy</a></li>
+          <li><a href="#data-privacy" data-view="data-privacy">Data Privacy Statement</a></li>
+          <li><a href="#atm-advisory" data-view="atm-advisory">Advisory on ATM Use</a></li>
+          <li><a href="#features" data-view="features">iAccess Features</a></li>
+          <li><a href="#find-us" data-view="find-us">Contact Us</a></li>
+        </ul>
+        
+                <!-- Login/Register shown when a section is open -->
+                <div class="sv-subnav-actions" id="svSubnavActions" hidden>
+          <a href="login.html" class="sv-subnav-btn sv-subnav-login">Log in</a>
+          <a href="registration.html" class="sv-subnav-btn sv-subnav-register">Register</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  
+  
+  <!-- Mobile slide-out menu -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+  <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="#about" data-view="about">About Us</a>
+    <a href="#faqs" data-view="faqs">FAQs</a>
+    <a href="#security-policy" data-view="security-policy">Security Policy</a>
+    <a href="#data-privacy" data-view="data-privacy">Data Privacy Statement</a>
+    <a href="#atm-advisory" data-view="atm-advisory">Advisory on ATM Use</a>
+    <a href="#features" data-view="features">iAccess Features</a>
+    <a href="#find-us" data-view="find-us">Contact Us</a>
+  </nav>
+
+  
+  
+  <!-- Hero and embedded section views -->
+  <main class="main-content">
+    <div class="hero-container">
+      <div class="hero-left">
+        <h1 class="welcome-title">Welcome to iAccess!</h1>
+        
+        
+                <!-- Security banner with feature hotspots -->
+                <div class="enhanced-security-card">
+          <img src="images/enhanced-security.png" alt="Enhanced Security - Lock My Access, Money Lock, Transaction Limits, Pause Period" class="enhanced-security-img">
+          <button type="button" class="security-hotspot" data-feature="lock-access" style="left: 3%; top: 55%; width: 30%; height: 18%;" aria-label="Lock My Access">
+            <span class="hotspot-label">Lock My Access</span>
+          </button>
+          <button type="button" class="security-hotspot" data-feature="money-lock" style="left: 37%; top: 55%; width: 30%; height: 18%;" aria-label="Money Lock">
+            <span class="hotspot-label">Money Lock</span>
+          </button>
+          <button type="button" class="security-hotspot" data-feature="transaction-limits" style="left: 3%; top: 73%; width: 30%; height: 18%;" aria-label="Transaction Limits">
+            <span class="hotspot-label">Transaction Limits</span>
+          </button>
+          <button type="button" class="security-hotspot" data-feature="pause-period" style="left: 37%; top: 73%; width: 30%; height: 18%;" aria-label="Pause Period">
+            <span class="hotspot-label">Pause Period</span>
+          </button>
+        </div>
+
+        
+                <!-- Opens Terms & Security Notice modal -->
+                <a href="#" class="terms-link" id="termsLink">
+          <img src="images/information-circle-icon.png" alt="Info" class="info-icon">
+          <span>Terms & Security Notice</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+
+      
+            <!-- Login / Register CTA card -->
+            <div class="hero-right">
+        <div class="access-card">
+          <div class="access-header">
+            <img src="images/user-profile-circle-icon.png" alt="User" class="user-icon">
+            <div class="access-title">
+              <h2>Access Your<br>iAccess Account</h2>
+              <p>Choose an option below to continue:</p>
+            </div>
+          </div>
+
+          
+                    <div class="access-buttons">
+            <button class="btn btn-login" id="loginBtn">
+              <img src="images/padlock-security-icon.png" alt="Lock" class="btn-icon">
+              <span class="btn-text">Log in</span>
+              <span class="btn-arrow">▶</span>
+            </button>
+            <button class="btn btn-signup btn-register" id="signupBtn">
+              <img src="images/user-key-icon.png" alt="Key" class="btn-icon">
+              <span class="btn-text">Register</span>
+              <span class="btn-arrow">▶</span>
+            </button>
+          </div>
+
+          
+                    <div class="security-reminder">
+            <img src="images/security-shield-check-icon.png" alt="Shield" class="reminder-icon">
+            <div class="reminder-text">
+              <h3>Your Security Matters</h3>
+              <p>Never share your iAccess ID, password, OTP, or other confidential information with anyone.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+    
+    
+
+    <!-- About Us section view -->
+    <section id="view-about" class="sv-view" hidden aria-labelledby="about-heading">
+      <div class="sv-inner">
+        <h1 id="about-heading" tabindex="-1">About Us</h1>
+        <p>Land Bank of the Philippines (LANDBANK) is a government financial institution that provides financial services to the Filipino people, with a special focus on countryside development and supporting the agricultural sector.</p>
+        <h2>Mission</h2>
+        <p>To promote countryside development by providing timely and responsive financial and support services, while remaining a viable and competitive institution.</p>
+        <h2>Vision</h2>
+        <p>By 2028, LANDBANK will be the leading universal bank that promotes inclusive and sustainable development.</p>
+        <h2>Commitment to Secure Digital Banking</h2>
+        <p>Through iAccess, LANDBANK delivers convenient, secure and reliable online banking services. We continuously invest in technology, multi-factor authentication, encryption and customer education to protect your accounts and data.</p>
+        <h2>Data Privacy</h2>
+        <p>LANDBANK processes personal data in accordance with the <strong>Data Privacy Act of 2012 (Republic Act No. 10173)</strong>. You may read the full official text here: <a href="https://www.officialgazette.gov.ph/2012/08/15/republic-act-no-10173/" target="_blank" rel="noopener noreferrer">RA 10173</a>.</p>
+        <button type="button" class="sv-back-btn" data-view="home">Back to Home</button>
+      </div>
+    </section>
+
+    
+    
+    <!-- FAQ accordion section -->
+    <section id="view-faqs" class="sv-view" hidden aria-labelledby="faqs-heading">
+      <div class="sv-inner">
+        <h1 id="faqs-heading" tabindex="-1">Frequently Asked Questions</h1>
+        <div class="sv-faq-list" id="svFaqList">
+          <div class="sv-faq-item">
+            <button type="button" class="sv-faq-q" aria-expanded="false" aria-controls="faq-a1" id="faq-q1">
+              How do I register for iAccess?
+              <span class="sv-faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="sv-faq-a" id="faq-a1" role="region" aria-labelledby="faq-q1" hidden>
+              <p>Click Sign Up on the home page, verify your ATM account details, complete personal information, set security questions, create your iAccess ID and password, then review and confirm.</p>
+            </div>
+          </div>
+          <div class="sv-faq-item">
+            <button type="button" class="sv-faq-q" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">
+              What if I forget my password?
+              <span class="sv-faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="sv-faq-a" id="faq-a2" role="region" aria-labelledby="faq-q2" hidden>
+              <p>Use the Forgot Password link on the Login page. You will need to answer your security questions and follow the reset process. For assistance, contact Customer Care.</p>
+            </div>
+          </div>
+          <div class="sv-faq-item">
+            <button type="button" class="sv-faq-q" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">
+              Why is my iAccess ID locked?
+              <span class="sv-faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="sv-faq-a" id="faq-a3" role="region" aria-labelledby="faq-q3" hidden>
+              <p>Three consecutive incorrect password attempts will lock your ID. Use Unlock ID on the Login page or contact Customer Care to regain access.</p>
+            </div>
+          </div>
+          <div class="sv-faq-item">
+            <button type="button" class="sv-faq-q" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">
+              Is my information secure?
+              <span class="sv-faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="sv-faq-a" id="faq-a4" role="region" aria-labelledby="faq-q4" hidden>
+              <p>Yes. iAccess uses industry-standard encryption, multi-factor authentication and continuous monitoring. Never share your credentials or OTP with anyone.</p>
+            </div>
+          </div>
+          <div class="sv-faq-item">
+            <button type="button" class="sv-faq-q" aria-expanded="false" aria-controls="faq-a5" id="faq-q5">
+              How do I change my transaction limits?
+              <span class="sv-faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="sv-faq-a" id="faq-a5" role="region" aria-labelledby="faq-q5" hidden>
+              <p>After logging in, go to the security or limits section of iAccess to view and update your transaction limits within the bank's allowed ranges.</p>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="sv-back-btn" data-view="home">Back to Home</button>
+      </div>
+    </section>
+
+    
+    
+    <!-- Security Policy section -->
+    <section id="view-security-policy" class="sv-view" hidden aria-labelledby="security-heading">
+      <div class="sv-inner">
+        <h1 id="security-heading" tabindex="-1">Security Policy</h1>
+        <h2>Encryption Standards</h2>
+        <p>All data transmitted between your device and LANDBANK servers is protected using strong TLS encryption. Sensitive information is stored using industry-accepted cryptographic practices.</p>
+        <h2>Multi-Factor Authentication</h2>
+        <p>iAccess employs multi-factor authentication including passwords, OTPs and security questions to verify your identity before critical actions.</p>
+        <h2>Safe Banking Guidelines</h2>
+        <ul class="sv-list">
+          <li>Never share your iAccess ID, password or OTP.</li>
+          <li>Always log out after using shared or public devices.</li>
+          <li>Keep your browser and device software up to date.</li>
+          <li>Be cautious of phishing emails or messages claiming to be from LANDBANK.</li>
+          <li>Use Lock My Access, Money Lock and Pause Period features when needed.</li>
+        </ul>
+        <button type="button" class="sv-back-btn" data-view="home">Back to Home</button>
+      </div>
+    </section>
+
+    
+    
+    <!-- Data Privacy section -->
+    <section id="view-data-privacy" class="sv-view" hidden aria-labelledby="privacy-heading">
+      <div class="sv-inner">
+        <h1 id="privacy-heading" tabindex="-1">Data Privacy Statement</h1>
+        <p>LANDBANK respects your privacy and processes personal data in accordance with the Data Privacy Act of 2012 (Republic Act No. 10173) and related issuances of the National Privacy Commission.</p>
+        <h2>Data We Collect</h2>
+        <p>Account information, personal identification details, contact information and transaction data necessary to provide banking services and comply with legal obligations.</p>
+        <h2>Your Rights</h2>
+        <p>The right to be informed, to access, to object, to erasure or blocking, to damages, to data portability, and to file a complaint with the National Privacy Commission, subject to applicable laws and regulations.</p>
+        <h2>Data Protection</h2>
+        <p>Organizational, physical and technical security measures protect your data. Access is limited to authorized personnel and service providers under appropriate agreements.</p>
+        <button type="button" class="sv-back-btn" data-view="home">Back to Home</button>
+      </div>
+    </section>
+
+    
+    
+    <!-- ATM Use advisory section -->
+    <section id="view-atm-advisory" class="sv-view" hidden aria-labelledby="atm-heading">
+      <div class="sv-inner">
+        <h1 id="atm-heading" tabindex="-1">Advisory on ATM Use</h1>
+        <h2>Security Tips</h2>
+        <ul class="sv-list">
+          <li>Cover the keypad when entering your PIN.</li>
+          <li>Do not accept help from strangers at the ATM.</li>
+          <li>Check for unusual devices or card skimmers before inserting your card.</li>
+          <li>Memorize your PIN and never write it on or keep it with your card.</li>
+          <li>Report lost or stolen cards immediately to Customer Care.</li>
+        </ul>
+        <h2>Best Practices</h2>
+        <ul class="sv-list">
+          <li>Use ATMs in well-lit, secure locations.</li>
+          <li>Count your cash and secure it before leaving the ATM area.</li>
+          <li>Retain your transaction receipt and check your account regularly.</li>
+        </ul>
+        <h2>Warnings</h2>
+        <p>If the ATM retains your card or displays unusual messages, contact LANDBANK Customer Care immediately. Do not leave the machine unattended while your card is inserted.</p>
+        <button type="button" class="sv-back-btn" data-view="home">Back to Home</button>
+      </div>
+    </section>
+
+    
+    
+    <!-- iAccess Features section -->
+    <section id="view-features" class="sv-view" hidden aria-labelledby="features-heading">
+      <div class="sv-inner">
+        <h1 id="features-heading" tabindex="-1">iAccess Features</h1>
+        <div class="sv-features-grid">
+          <article class="sv-card">
+            <h3>Account Inquiry</h3>
+            <p>View balances, transaction history and account details anytime.</p>
+          </article>
+          <article class="sv-card">
+            <h3>Fund Transfers</h3>
+            <p>Transfer to LANDBANK and other bank accounts within set limits.</p>
+          </article>
+          <article class="sv-card">
+            <h3>Bill Payments</h3>
+            <p>Pay utilities, credit cards and other merchants conveniently.</p>
+          </article>
+          <article class="sv-card">
+            <h3>Lock My Access</h3>
+            <p>Temporarily lock your iAccess login.</p>
+          </article>
+          <article class="sv-card">
+            <h3>Money Lock</h3>
+            <p>Lock a portion of your funds to prevent unintended transfers.</p>
+          </article>
+          <article class="sv-card">
+            <h3>Transaction Limits</h3>
+            <p>Set daily and per-transaction limits.</p>
+          </article>
+          <article class="sv-card">
+            <h3>Pause Period</h3>
+            <p>Schedule periods when online transactions are disabled.</p>
+          </article>
+          <article class="sv-card">
+            <h3>Security Questions</h3>
+            <p>Extra verification for account recovery and sensitive actions.</p>
+          </article>
+        </div>
+        <button type="button" class="sv-back-btn" data-view="home">Back to Home</button>
+      </div>
+    </section>
+
+    
+    
+    <!-- Branch locator and contact form -->
+    <section id="view-find-us" class="sv-view" hidden aria-labelledby="findus-heading">
+      
+      <!-- Mobile tabs: locator vs contact -->
+      <nav class="sv-findus-mobile-nav" aria-label="Find Us sections">
+        <a href="#findus-heading" class="sv-findus-mobile-link is-active" data-findus-tab="locator">Find Us</a>
+        <a href="#svContactForm" class="sv-findus-mobile-link" data-findus-tab="contact">Contact Us</a>
+      </nav>
+      <div class="sv-findus-layout">
+        
+        <div class="sv-inner sv-findus-left">
+          <h1 id="findus-heading" tabindex="-1">Find Us</h1>
+          <p class="sv-findus-desc">Search for LANDBANK branches and ATMs near you, or send us a message using the contact form.</p>
+          <form class="sv-locator-form" id="svLocatorForm" role="search">
+            <div class="sv-locator-fields">
+              <div class="sv-field">
+                <label for="svCityInput">City / Municipality</label>
+                <input type="text" id="svCityInput" class="sv-input" placeholder="e.g. Manila, Makati" autocomplete="address-level2">
+              </div>
+              <div class="sv-field">
+                <label for="svTypeSelect">Type</label>
+                <select id="svTypeSelect" class="sv-input reg-input reg-select">
+                  <option value="all">All</option>
+                  <option value="branch">Branch</option>
+                  <option value="atm">ATM</option>
+                </select>
+              </div>
+              <button type="submit" class="sv-search-btn">Search</button>
+            </div>
+            <div class="sv-locator-meta">
+              <button type="button" class="sv-clear-btn" id="svClearFilters">Clear</button>
+              <span class="sv-results-count" id="svResultsCount" aria-live="polite"></span>
+            </div>
+          </form>
+          <div class="sv-map-wrap">
+            <iframe
+              id="svMapFrame"
+              class="sv-map-frame"
+              title="Branch and ATM map"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=120.95%2C14.55%2C121.05%2C14.65&amp;layer=mapnik&amp;marker=14.5764%2C120.9880"
+            ></iframe>
+          </div>
+          <div class="sv-directory" id="svDirectory">
+            <article class="sv-loc-card" data-type="branch" data-city="manila" data-lat="14.5764" data-lon="120.9880">
+              <h3>LANDBANK Head Office</h3>
+              <p class="sv-loc-addr">1598 M.H. del Pilar cor. Dr. J. Quintos Sts., Malate, Manila</p>
+              <span class="sv-loc-type">Branch</span>
+            </article>
+            <article class="sv-loc-card" data-type="branch" data-city="makati" data-lat="14.5547" data-lon="121.0244">
+              <h3>LANDBANK Makati Branch</h3>
+              <p class="sv-loc-addr">L.V. Locsin Building, 6752 Ayala Avenue, Makati City</p>
+              <span class="sv-loc-type">Branch</span>
+            </article>
+            <article class="sv-loc-card" data-type="atm" data-city="makati" data-lat="14.5547" data-lon="121.0244">
+              <h3>LANDBANK ATM — Ayala Avenue</h3>
+              <p class="sv-loc-addr">Near Ayala Avenue, Makati City</p>
+              <span class="sv-loc-type">ATM</span>
+            </article>
+            <article class="sv-loc-card" data-type="branch" data-city="quezon city" data-lat="14.6507" data-lon="121.0490">
+              <h3>LANDBANK Quezon City Branch</h3>
+              <p class="sv-loc-addr">Elliptical Road cor. Commonwealth Avenue, Quezon City</p>
+              <span class="sv-loc-type">Branch</span>
+            </article>
+            <article class="sv-loc-card" data-type="atm" data-city="quezon city" data-lat="14.6507" data-lon="121.0490">
+              <h3>LANDBANK ATM — Quezon City Hall</h3>
+              <p class="sv-loc-addr">Near Quezon City Hall Complex, Quezon City</p>
+              <span class="sv-loc-type">ATM</span>
+            </article>
+            <article class="sv-loc-card" data-type="branch" data-city="pasig" data-lat="14.5764" data-lon="121.0851">
+              <h3>LANDBANK Pasig Branch</h3>
+              <p class="sv-loc-addr">Ortigas Center, Pasig City</p>
+              <span class="sv-loc-type">Branch</span>
+            </article>
+            <article class="sv-loc-card" data-type="branch" data-city="cebu" data-lat="10.3157" data-lon="123.8854">
+              <h3>LANDBANK Cebu Main Branch</h3>
+              <p class="sv-loc-addr">Osmeña Boulevard, Cebu City</p>
+              <span class="sv-loc-type">Branch</span>
+            </article>
+            <article class="sv-loc-card" data-type="atm" data-city="cebu" data-lat="10.3157" data-lon="123.8854">
+              <h3>LANDBANK ATM — Cebu IT Park</h3>
+              <p class="sv-loc-addr">Cebu IT Park, Lahug, Cebu City</p>
+              <span class="sv-loc-type">ATM</span>
+            </article>
+            <article class="sv-loc-card" data-type="branch" data-city="davao" data-lat="7.0731" data-lon="125.6128">
+              <h3>LANDBANK Davao Branch</h3>
+              <p class="sv-loc-addr">C.M. Recto Street, Davao City</p>
+              <span class="sv-loc-type">Branch</span>
+            </article>
+            <article class="sv-loc-card" data-type="atm" data-city="davao" data-lat="7.0731" data-lon="125.6128">
+              <h3>LANDBANK ATM — Davao City Hall</h3>
+              <p class="sv-loc-addr">Near City Hall, Davao City</p>
+              <span class="sv-loc-type">ATM</span>
+            </article>
+            <article class="sv-loc-card" data-type="branch" data-city="iloilo" data-lat="10.7202" data-lon="122.5621">
+              <h3>LANDBANK Iloilo Branch</h3>
+              <p class="sv-loc-addr">Iznart Street, Iloilo City</p>
+              <span class="sv-loc-type">Branch</span>
+            </article>
+            <article class="sv-loc-card" data-type="branch" data-city="baguio" data-lat="16.4023" data-lon="120.5960">
+              <h3>LANDBANK Baguio Branch</h3>
+              <p class="sv-loc-addr">Session Road, Baguio City</p>
+              <span class="sv-loc-type">Branch</span>
+            </article>
+            <article class="sv-loc-card" data-type="atm" data-city="manila" data-lat="14.5995" data-lon="120.9842">
+              <h3>LANDBANK ATM — Quiapo</h3>
+              <p class="sv-loc-addr">Quiapo, Manila</p>
+              <span class="sv-loc-type">ATM</span>
+            </article>
+            <article class="sv-loc-card" data-type="branch" data-city="taguig" data-lat="14.5547" data-lon="121.0509">
+              <h3>LANDBANK Bonifacio Global City Branch</h3>
+              <p class="sv-loc-addr">32nd Street, Bonifacio Global City, Taguig</p>
+              <span class="sv-loc-type">Branch</span>
+            </article>
+            <article class="sv-loc-card" data-type="atm" data-city="pasay" data-lat="14.5378" data-lon="121.0014">
+              <h3>LANDBANK ATM — NAIA Terminal 3</h3>
+              <p class="sv-loc-addr">Ninoy Aquino International Airport, Pasay City</p>
+              <span class="sv-loc-type">ATM</span>
+            </article>
+          </div>
+          <p class="sv-no-results" id="svNoResults" hidden>No results found</p>
+          <button type="button" class="sv-back-btn" data-view="home">Back to Home</button>
+        </div>
+
+        
+        <!-- Contact form panel -->
+        <div class="sv-inner sv-contact-panel" id="sv-contact-panel">
+          <h1 class="sv-contact-heading" tabindex="-1">Contact Us</h1>
+          <h2 class="sv-contact-title">For Inquiries, please complete the form below</h2>
+          <form id="svContactForm" class="sv-contact-form" novalidate>
+            <div class="sv-contact-row">
+              <div class="sv-contact-field">
+                <label for="svContactName">Name <span class="sv-req">*</span></label>
+                <input type="text" id="svContactName" class="sv-input" placeholder="Juan Dela Cruz" autocomplete="name" required>
+                <p class="field-error" id="svContactNameError" hidden></p>
+              </div>
+              <div class="sv-contact-field">
+                <label for="svContactEmail">Email Address <span class="sv-req">*</span></label>
+                <input type="email" id="svContactEmail" class="sv-input" placeholder="juandelacruz@gmail.com" autocomplete="email" required>
+                <p class="field-error" id="svContactEmailError" hidden></p>
+              </div>
+              <div class="sv-contact-field">
+                <label for="svContactPhone">Contact Number <span class="sv-req">*</span></label>
+                <div class="sv-phone-row">
+                  <span class="sv-phone-prefix" aria-hidden="true">+63</span>
+                  <input type="tel" id="svContactPhone" class="sv-input" placeholder="9XXXXXXXXX" maxlength="10" inputmode="numeric" autocomplete="tel" required>
+                </div>
+                <p class="field-error" id="svContactPhoneError" hidden></p>
+              </div>
+            </div>
+            <div class="sv-contact-row sv-contact-row-2">
+              <div class="sv-contact-field sv-contact-subject-field">
+                <label for="svContactSubject">Subject Type <span class="sv-req">*</span></label>
+                <select id="svContactSubject" class="sv-input reg-input reg-select" required>
+                  <option value="">Select subject</option>
+                  <option value="account">Account Inquiry</option>
+                  <option value="iaccess">iAccess / Online Banking</option>
+                  <option value="atm">ATM / Card</option>
+                  <option value="loan">Loans</option>
+                  <option value="other">Other</option>
+                </select>
+                <p class="field-error" id="svContactSubjectError" hidden></p>
+              </div>
+              <div class="sv-contact-field sv-contact-other-field" id="svOtherSubjectWrap" hidden>
+                <label for="svContactSubjectOther">Other (please specify) <span class="sv-req">*</span></label>
+                <input type="text" id="svContactSubjectOther" class="sv-input" placeholder="Please specify" autocomplete="off">
+                <p class="field-error" id="svContactSubjectOtherError" hidden></p>
+              </div>
+              <div class="sv-contact-field sv-contact-concern-field">
+                <label for="svContactConcern">Concern Type <span class="sv-req">*</span></label>
+                <select id="svContactConcern" class="sv-input reg-input reg-select" required>
+                  <option value="">Select concern</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="complaint">Complaint</option>
+                  <option value="feedback">Feedback</option>
+                  <option value="technical">Technical Issue</option>
+                  <option value="lost-card">Lost / Stolen Card</option>
+                </select>
+                <p class="field-error" id="svContactConcernError" hidden></p>
+              </div>
+            </div>
+            <div class="sv-contact-field">
+              <label for="svContactMessage">Message <span class="sv-req">*</span></label>
+              <textarea id="svContactMessage" class="sv-input sv-textarea" rows="6" placeholder="Please add your message" required></textarea>
+              <p class="field-error" id="svContactMessageError" hidden></p>
+            </div>
+            <p class="sv-contact-success" id="svContactSuccess" hidden>Thank you. Your inquiry has been received.</p>
+            <div class="sv-contact-actions">
+              <button type="submit" class="sv-contact-submit" id="svContactSubmit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+
+  
+  
+  <!-- Regulatory trust badges -->
+  <section class="trust-section">
+    <div class="trust-container">
+      <div class="trust-label">Trusted and Secure</div>
+      <div class="trust-badges">
+        <div class="badge-item">
+          <img src="images/pdic-insurance-badge.png" alt="PDIC" class="badge-img">
+          <p>Deposits are insured by PDIC up to ₱1 Million per depositor.</p>
+        </div>
+        <div class="badge-divider"></div>
+        <div class="badge-item">
+          <img src="images/bsp-seal-logo.png" alt="BSP" class="badge-img bsp">
+          <p>Regulated by the Bangko Sentral ng Pilipinas<br>
+            <a href="https://www.bsp.gov.ph/" target="_blank" rel="noopener">https://www.bsp.gov.ph/</a>
+          </p>
+        </div>
+        <div class="badge-divider"></div>
+        <div class="badge-item">
+          <img src="images/bancnet-logo.png" alt="BancNet" class="badge-img bancnet">
+          <p>Member of BancNet for nationwide ATM and POS network</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  
+  
+  <!-- Site footer -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <a href="homepage.html" class="logo-link">
+          <img src="images/landbank-logo-icon.png" alt="LANDBANK" class="footer-logo">
+        </a>
+        <a href="homepage.html" class="logo-link">
+          <img src="images/landbank-text-logo.png" alt="LANDBANK" class="footer-text-logo">
+        </a>
+      </div>
+      <div class="footer-middle">
+        <div class="care-header">
+          <img src="images/location-pin-icon.png" alt="Location" class="pin-icon">
+          <h3>LANDBANK Customer Care Center</h3>
+        </div>
+        <div class="care-details">
+          <div class="care-item">
+            <img src="images/phone-call-icon.png" alt="Phone" class="care-icon">
+            <span>
+              <a href="tel:+63284057000">(02) 8405-7000</a> (NCR) or
+              <a href="tel:1800104057000">1-800-10-405-7000</a> (PLDT Domestic Toll Free/Outside NCR)
+            </span>
+          </div>
+          <div class="care-item">
+            <img src="images/email-envelope-icon.png" alt="Email" class="care-icon">
+            <a href="#sv-contact-panel" class="footer-care-email">customercare@landbank.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-right">
+        <p>Copyright © 2026<br>Land Bank of the Philippines.<br>All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  
+  
+  <!-- Terms & Security Notice modal -->
+  <div class="modal-overlay" id="termsModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Terms & Security Notice</h2>
+        <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <section>
+          <h3>ACCESS & AUTHORIZED USE</h3>
+          <p>Access is limited to authorized users and is subject to applicable laws and regulations.</p>
+        </section>
+        <section>
+          <h3>PROHIBITED ACTIVITIES</h3>
+          <ul>
+            <li>Unauthorized access to data</li>
+            <li>Altering, stealing, or destroying data</li>
+            <li>Interfering with systems or servers</li>
+            <li>Introducing computer viruses</li>
+          </ul>
+        </section>
+        <section>
+          <h3>SECURITY REMINDER</h3>
+          <p>Never share your iAccess ID, password, OTP, or other confidential information.</p>
+        </section>
+        <section>
+          <h3>PENALTIES</h3>
+          <p>Violations may be subject to applicable penalties.</p>
+        </section>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-close-modal" id="modalCloseBtn">CLOSE</button>
+      </div>
+    </div>
+  </div>
+
+  
+  
+  <!-- Security feature detail modal -->
+  <div class="modal-overlay" id="featureModal">
+    <div class="modal feature-modal">
+      <div class="feature-modal-body">
+        <h2 id="featureModalTitle">Feature</h2>
+        <p id="featureModalDesc"></p>
+        <button type="button" class="btn-close-modal" id="featureModalClose">CLOSE</button>
+      </div>
+    </div>
+  </div>
+
+  
+  
+  <!-- Scroll to top -->
+  <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top" type="button" hidden>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M12 5l-7 7h4.5v7h5v-7H19l-7-7z" fill="currentColor"/>
+    </svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>

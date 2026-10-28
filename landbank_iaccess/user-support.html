@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="images/landbank-logo-icon.png" />
+    <title>Customer Support | LANDBANK iAccess</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      try {
+        if (localStorage.getItem("iAccessSidebarCollapsed") === "true" && window.matchMedia("(min-width: 901px)").matches) {
+          document.documentElement.classList.add("sidebar-collapsed-preload");
+        }
+      } catch (error) {
+        console.error("Unable to restore sidebar state.", error);
+      }
+    </script>
+    <link rel="stylesheet" href="user-style.css?v=4" />
+  </head>
+  <body>
+    <script>
+      try {
+        document.body.dataset.theme = localStorage.getItem("landbankThemeMode") === "dark" ? "dark" : "light";
+      } catch (error) {
+        document.body.dataset.theme = "light";
+        console.error("Unable to restore color theme.", error);
+      }
+    </script>
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z M9 22V12h6v10" /></symbol>
+      <symbol id="i-history" viewBox="0 0 24 24"><path d="M4 7h16 M4 12h9 M4 17h16" /></symbol>
+      <symbol id="i-transfer" viewBox="0 0 24 24"><path d="M8 3L4 7l4 4 M4 7h16 M16 21l4-4-4-4 M20 17H4" /></symbol>
+      <symbol id="i-card" viewBox="0 0 24 24"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z M2 10h20 M6 15h3" /></symbol>
+      <symbol id="i-settings" viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l-.06-.06A1.65 1.65 0 0 0 4.76 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l.06.06A1.65 1.65 0 0 0 19.24 9c.4.16.84.2 1.25.2H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" /></symbol>
+      <symbol id="i-support" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-9 9c0 1.6.4 3 1.2 4.3L3 21l4.7-1.2A9 9 0 1 0 12 3z M8.5 12h.01 M12 12h.01 M15.5 12h.01" /></symbol>
+      <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4 M16 17l5-5-5-5 M21 12H9" /></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><path d="M11 3a8 8 0 1 0 0 16 8 8 0 0 0 0-16z M21 21l-4.3-4.3" /></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16 M4 12h16 M4 18h16" /></symbol>
+      <symbol id="i-bell" viewBox="0 0 20 20"><path d="M10 2a5 5 0 00-5 5v3.5l-1.5 2.5h13L15 10.5V7a5 5 0 00-5-5z M8 15a2 2 0 004 0" /></symbol>
+      <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5 M5 12l7-7 7 7" /></symbol>
+      <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14 M19 12l-7 7-7-7" /></symbol>
+    </svg>
+
+    <div class="app">
+      <aside class="side" id="side">
+        <div class="logo">
+          <svg width="66" height="66" viewBox="0 0 66 66" aria-hidden="true">
+            <circle cx="33" cy="33" r="30" fill="#fff" />
+            <path d="M33 10c8 7 12 15 8 24-2 5-5 8-8 12-3-4-6-7-8-12-4-9 0-17 8-24z" fill="#026D3D" />
+            <path d="M12 40c8-2 14 2 21 10M54 40c-8-2-14 2-21 10" stroke="#026D3D" stroke-width="3" fill="none" />
+            <path d="M33 26v26" stroke="#fff" stroke-width="2" />
+          </svg>
+          <div class="t"><b>LANDBANK</b><i>iAccess</i></div>
+        </div>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="user-dashboard.html" class="ni"><svg class="ic" width="24" height="24"><use href="#i-home" /></svg>Dashboard</a>
+          <a href="user-transactionhistory.html" class="ni"><svg class="ic" width="24" height="24"><use href="#i-history" /></svg>Transaction History</a>
+          <a href="user-fundtransfer.html" class="ni"><svg class="ic" width="24" height="24"><use href="#i-transfer" /></svg>Transfer Funds</a>
+          <a href="user-billspayment.html" class="ni"><svg class="ic" width="24" height="24"><use href="#i-card" /></svg>Bills Payment</a>
+          <a href="user-settings.html" class="ni"><svg class="ic" width="24" height="24"><use href="#i-settings" /></svg>Settings</a>
+          <a class="ni on" href="user-support.html" aria-current="page"><svg class="ic" width="24" height="24"><use href="#i-support" /></svg>Customer support</a>
+        </nav>
+        <div class="sp"></div>
+        <div class="bot">
+        </div>
+      </aside>
+
+      <div class="main">
+        <header class="hd">
+          <button class="mb" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false">
+            <svg class="ic" width="24" height="24"><use href="#i-menu" /></svg>
+          </button>
+          <div class="support-header-title">Help &amp; Support</div>
+          <div class="hr">
+            <div class="nw">
+              <button class="bell" id="bell" type="button" aria-label="Notifications" aria-expanded="false" aria-haspopup="true">
+                <svg class="ic" width="24" height="24"><use href="#i-bell" /></svg><span class="notification-badge" aria-hidden="true">2</span>
+              </button>
+              <div class="np" id="np" role="dialog" aria-label="Notifications">
+                <div class="np-h"><b>Notifications</b><button id="markAll" type="button">Mark all as read</button></div>
+                <div class="np-list">
+                  <button class="np-item unread" type="button">
+                    <span class="c"><svg class="ic" width="20" height="20"><use href="#i-down" /></svg></span>
+                    <span><p>Money received</p><small>+ ₱20,000.00 from Tuition Allowance · 25 Jan, 12:30 AM</small></span>
+                  </button>
+                  <button class="np-item unread" type="button">
+                    <span class="c"><svg class="ic" width="20" height="20"><use href="#i-card" /></svg></span>
+                    <span><p>Subscription payment</p><small>Spotify Subscription – ₱50.00 was charged · 28 Jan, 12:30 AM</small></span>
+                  </button>
+                  <button class="np-item" type="button">
+                    <span class="c"><svg class="ic" width="20" height="20"><use href="#i-up" /></svg></span>
+                    <span><p>Load Service</p><small>₱200.00 was deducted from your card · 22 Jan, 12:30 AM</small></span>
+                  </button>
+                  <button class="np-item" type="button">
+                    <span class="c"><svg class="ic" width="20" height="20"><use href="#i-up" /></svg></span>
+                    <span><p>Netflix Subscription</p><small>₱560.00 was deducted from your card · 20 Jan, 12:30 AM</small></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <span class="vd"></span>
+            <div class="profile-menu-wrap">
+              <button class="pf" id="profileMenuBtn" type="button" aria-haspopup="menu" aria-expanded="false">
+                <span class="av" aria-hidden="true">JD</span>
+                <span class="profile-name"><b>Juan De La Cruz</b><small>09********38</small></span>
+                <svg class="profile-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg>
+              </button>
+              <div class="profile-menu" id="profileMenu" role="menu" hidden>
+                <a href="user-settings.html" role="menuitem">My Profile</a>
+                <a class="profile-signout" href="homepage.html" role="menuitem">Sign out</a>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <main class="ct support-page">
+          <section class="support-hero">
+            <span class="support-hero-icon"><svg class="ic" width="28" height="28"><use href="#i-support" /></svg></span>
+            <div>
+              <p class="support-eyebrow">LANDBANK iAccess</p>
+              <h1>How can we help?</h1>
+              <p>Find answers to common questions about your account and transactions.</p>
+            </div>
+          </section>
+
+          <section class="support-search card" aria-label="Search help articles">
+            <svg class="ic" width="20" height="20"><use href="#i-search" /></svg>
+            <input id="supportSearch" type="search" placeholder="Search help topics..." aria-label="Search help topics" />
+          </section>
+
+          <section class="support-section">
+            <div class="support-section-heading">
+              <div>
+                <h2>Frequently asked questions</h2>
+                <p>Quick answers to help you manage your iAccess account.</p>
+              </div>
+              <span class="support-faq-count" id="supportFaqCount">6 topics</span>
+            </div>
+            <div class="support-faq-list" id="supportFaqList">
+              <details class="support-faq card" data-search="balance dashboard available balance update transfer bill payment cash in">
+                <summary>When does my available balance update?</summary>
+                <p>Your dashboard balance is updated after a demo transfer, bill payment, or successful cash-in. Refreshing the page keeps the latest saved balance.</p>
+              </details>
+              <details class="support-faq card" data-search="transfer funds pending recipient wrong account">
+                <summary>How do I make a fund transfer?</summary>
+                <p>Open Transfer Funds, choose a transfer type, enter the recipient details and amount, then review the information before confirming.</p>
+              </details>
+              <details class="support-faq card" data-search="pay bill bills payment biller reference number">
+                <summary>How do I pay a bill?</summary>
+                <p>Choose a biller, provide its account or reference number, enter an amount that meets the displayed minimum, and confirm after reviewing the payment details.</p>
+              </details>
+              <details class="support-faq card" data-search="cash in add money payment gateway">
+                <summary>How can I add money to my account?</summary>
+                <p>Choose Cash In on the dashboard, enter an amount, and complete the payment gateway flow. In this prototype, the balance changes only after a successful demo payment.</p>
+              </details>
+              <details class="support-faq card" data-search="dark mode appearance settings theme">
+                <summary>How do I change the appearance?</summary>
+                <p>Open Settings and use the appearance controls to switch between light and dark mode. Your choice is remembered as you move between pages.</p>
+              </details>
+              <details class="support-faq card" data-search="security password pin account personal information">
+                <summary>How can I keep my account secure?</summary>
+                <p>Never share your password, PIN, or verification code. For real account concerns, contact LANDBANK through its official support channels.</p>
+              </details>
+              <p class="support-empty" id="supportEmpty" hidden>No help topics match your search. Try a different keyword.</p>
+            </div>
+          </section>
+
+          <section class="support-contact card">
+            <div class="support-contact-mark"><svg class="ic" width="24" height="24"><use href="#i-support" /></svg></div>
+            <div>
+              <h2>Still need help?</h2>
+              <p>This iAccess interface is a school prototype and does not send support requests. For real account assistance, visit an official LANDBANK channel.</p>
+              <a href="https://www.landbank.com/" target="_blank" rel="noopener noreferrer">Visit LANDBANK website <span aria-hidden="true">↗</span></a>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script src="user-script.js?v=4" defer></script>
+  </body>
+</html>

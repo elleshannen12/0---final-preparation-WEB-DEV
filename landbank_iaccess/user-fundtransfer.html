@@ -1,0 +1,537 @@
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="images/landbank-logo-icon.png" />
+    <title>Fund Transfer | LANDBANK iAccess</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script>
+      try {
+        if (localStorage.getItem("iAccessSidebarCollapsed") === "true" && window.matchMedia("(min-width: 901px)").matches) {
+          document.documentElement.classList.add("sidebar-collapsed-preload");
+        }
+      } catch (error) {
+        console.error("Unable to restore sidebar state.", error);
+      }
+    </script>
+    <link rel="stylesheet" href="user-style.css?v=4" />
+    </head>
+
+<body>
+    <script>
+      try {
+        document.body.dataset.theme = localStorage.getItem("landbankThemeMode") === "dark" ? "dark" : "light";
+      } catch (error) {
+        document.body.dataset.theme = "light";
+        console.error("Unable to restore color theme.", error);
+      }
+    </script>
+    <!-- Icon sprite (same Lucide-style set as the dashboard + a few additions at the bottom) -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+        <symbol id="i-home" viewBox="0 0 24 24">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z M9 22V12h6v10" />
+        </symbol>
+        <symbol id="i-history" viewBox="0 0 24 24">
+            <path d="M4 7h16 M4 12h9 M4 17h16" />
+        </symbol>
+        <symbol id="i-transfer" viewBox="0 0 24 24">
+            <path d="M8 3L4 7l4 4 M4 7h16 M16 21l4-4-4-4 M20 17H4" />
+        </symbol>
+        <symbol id="i-bank" viewBox="0 0 24 24">
+            <path d="M3 22h18 M6 18v-7 M10 18v-7 M14 18v-7 M18 18v-7 M12 2l8 5H4z" />
+        </symbol>
+        <symbol id="i-card" viewBox="0 0 24 24">
+            <path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z M2 10h20 M6 15h3" />
+        </symbol>
+        <symbol id="i-settings" viewBox="0 0 24 24">
+            <path
+                d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.76 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.24 9c.4.16.84.2 1.25.2H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+        </symbol>
+        <symbol id="i-support" viewBox="0 0 24 24">
+            <path
+                d="M12 3a9 9 0 0 0-9 9c0 1.6.4 3 1.2 4.3L3 21l4.7-1.2A9 9 0 1 0 12 3z M8.5 12h.01 M12 12h.01 M15.5 12h.01" />
+        </symbol>
+        <symbol id="i-logout" viewBox="0 0 24 24">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4 M16 17l5-5-5-5 M21 12H9" />
+        </symbol>
+        <symbol id="i-search" viewBox="0 0 24 24">
+            <path d="M11 3a8 8 0 1 0 0 16 8 8 0 0 0 0-16z M21 21l-4.3-4.3" />
+        </symbol>
+        <symbol id="i-bell" viewBox="0 0 20 20">
+            <path d="M10 2a5 5 0 00-5 5v3.5l-1.5 2.5h13L15 10.5V7a5 5 0 0 0-5-5z M8 15a2 2 0 004 0" />
+        </symbol>
+        <symbol id="i-qr" viewBox="0 0 24 24">
+            <path d="M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h3v3h-3z M21 14v7h-4 M14 21h.01" />
+        </symbol>
+        <symbol id="i-upload" viewBox="0 0 24 24">
+            <path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z M12 16v-6 M9 12.5l3-3 3 3" />
+        </symbol>
+        <symbol id="i-download" viewBox="0 0 24 24">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4 M7 10l5 5 5-5 M12 15V3" />
+        </symbol>
+        <symbol id="i-up" viewBox="0 0 24 24">
+            <path d="M12 19V5 M5 12l7-7 7 7" />
+        </symbol>
+        <symbol id="i-down" viewBox="0 0 24 24">
+            <path d="M12 5v14 M19 12l-7 7-7-7" />
+        </symbol>
+        <symbol id="i-left" viewBox="0 0 24 24">
+            <path d="M15 18l-6-6 6-6" />
+        </symbol>
+        <symbol id="i-right" viewBox="0 0 24 24">
+            <path d="M9 18l6-6-6-6" />
+        </symbol>
+        <symbol id="i-menu" viewBox="0 0 24 24">
+            <path d="M4 6h16 M4 12h16 M4 18h16" />
+        </symbol>
+        <!-- new symbols for this page -->
+        <symbol id="i-chevdown" viewBox="0 0 24 24">
+            <path d="M6 9l6 6 6-6" />
+        </symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24">
+            <path d="M5 12h14 M12 5l7 7-7 7" />
+        </symbol>
+        <symbol id="i-check" viewBox="0 0 24 24">
+            <path d="M20 6L9 17l-5-5" />
+        </symbol>
+        <symbol id="i-bulb" viewBox="0 0 24 24">
+            <path
+                d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5 M9 18h6 M10 22h4" />
+        </symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24">
+            <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z M12 6v6l4 2" />
+        </symbol>
+        <symbol id="i-leaf" viewBox="0 0 24 24">
+            <path
+                d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+        </symbol>
+        <symbol id="i-camera" viewBox="0 0 24 24">
+            <path
+                d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z M12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+        </symbol>
+    </svg>
+
+    <div class="app">
+        <!-- Sidebar (same as dashboard; Fund Transfer is active) -->
+        <aside class="side" id="side">
+            <div class="logo">
+                <svg width="66" height="66" viewBox="0 0 66 66" aria-hidden="true">
+                    <circle cx="33" cy="33" r="30" fill="#fff" />
+                    <path d="M33 10c8 7 12 15 8 24-2 5-5 8-8 12-3-4-6-7-8-12-4-9 0-17 8-24z" fill="#026D3D" />
+                    <path d="M12 40c8-2 14 2 21 10M54 40c-8-2-14 2-21 10" stroke="#026D3D" stroke-width="3"
+                        fill="none" />
+                    <path d="M33 26v26" stroke="#fff" stroke-width="2" />
+                </svg>
+                <div class="t"><b>LANDBANK</b><i>iAccess</i></div>
+            </div>
+
+            <nav class="nav">
+                <a href="user-dashboard.html" class="ni"><svg class="ic" width="24" height="24">
+                        <use href="#i-home" />
+                    </svg>Dashboard</a>
+                <a href="user-transactionhistory.html" class="ni"><svg class="ic" width="24" height="24">
+                        <use href="#i-history" />
+                    </svg>Transaction History</a>
+                <a href="user-fundtransfer.html" class="ni on"><svg class="ic" width="24" height="24">
+                        <use href="#i-transfer" />
+                    </svg>Transfer Funds</a>
+                <a href="user-billspayment.html" class="ni"><svg class="ic" width="24" height="24">
+                        <use href="#i-card" />
+                    </svg>Bills Payment</a>
+                <a href="user-settings.html" class="ni"><svg class="ic" width="24" height="24">
+                        <use href="#i-settings" />
+                    </svg>Settings</a>
+                <a href="user-support.html" class="ni"><svg class="ic" width="24" height="24">
+                        <use href="#i-support" />
+                    </svg>Customer support</a>
+            </nav>
+
+            <div class="sp"></div>
+
+            <div class="bot">
+            </div>
+        </aside>
+
+        <div class="main">
+            <!-- Top header (same as dashboard) -->
+            <header class="hd">
+                <button class="mb" id="menuBtn" aria-label="Menu">
+                    <svg class="ic" width="24" height="24">
+                        <use href="#i-menu" />
+                    </svg>
+                </button>
+                <div class="hr">
+                    <div class="nw">
+                        <button class="bell" id="bell" aria-label="Notifications" aria-expanded="false" aria-haspopup="true">
+                            <svg class="ic" width="24" height="24">
+                                <use href="#i-bell" />
+                            </svg><span class="notification-badge" aria-hidden="true">2</span>
+                        </button>
+                        <div class="np" id="np" role="dialog" aria-label="Notifications">
+                            <div class="np-h"><b>Notifications</b><button id="markAll">Mark all as read</button></div>
+                            <div class="np-list">
+                                <button class="np-item unread">
+                                    <span class="c"><svg class="ic" width="20" height="20">
+                                            <use href="#i-down" />
+                                        </svg></span>
+                                    <span>
+                                        <p>Money received</p><small>+ ₱20,000.00 from Tuition Allowance · 25 Jan, 12:30
+                                            AM</small>
+                                    </span>
+                                </button>
+                                <button class="np-item unread">
+                                    <span class="c"><svg class="ic" width="20" height="20">
+                                            <use href="#i-card" />
+                                        </svg></span>
+                                    <span>
+                                        <p>Subscription payment</p><small>Spotify Subscription – ₱50.00 was charged · 28
+                                            Jan, 12:30 AM</small>
+                                    </span>
+                                </button>
+                                <button class="np-item">
+                                    <span class="c"><svg class="ic" width="20" height="20">
+                                            <use href="#i-up" />
+                                        </svg></span>
+                                    <span>
+                                        <p>Load Service</p><small>₱200.00 was deducted from your card · 22 Jan, 12:30
+                                            AM</small>
+                                    </span>
+                                </button>
+                                <button class="np-item">
+                                    <span class="c"><svg class="ic" width="20" height="20">
+                                            <use href="#i-up" />
+                                        </svg></span>
+                                    <span>
+                                        <p>Netflix Subscription</p><small>₱560.00 was deducted from your card · 20 Jan,
+                                            12:30 AM</small>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="vd"></span>
+                    <div class="profile-menu-wrap">
+                        <button class="pf" id="profileMenuBtn" type="button" aria-haspopup="menu" aria-expanded="false">
+                            <span class="av" aria-hidden="true">JD</span>
+                            <span class="profile-name"><b>Juan De La Cruz</b><small>09********38</small></span>
+                            <svg class="profile-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg>
+                        </button>
+                        <div class="profile-menu" id="profileMenu" role="menu" hidden>
+                            <a href="user-settings.html" role="menuitem">My Profile</a>
+                            <a class="profile-signout" href="homepage.html" role="menuitem">Sign out</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <main class="ct ft-ct">
+                <section class="ft-page">
+                    <h1 class="ft-title">Fund Transfer</h1>
+                    <p class="ft-sub">Send money to your own accounts, other LANDBANK accounts, or to other banks.</p>
+
+                    <!-- Transfer type cards -->
+                    <div class="ft-options" role="group" aria-label="Transfer type">
+                        <button type="button" class="ft-option on" data-type="lb" aria-pressed="true">
+                            <span class="ft-oic"><svg class="ic" width="24" height="24">
+                                    <use href="#i-bank" />
+                                </svg></span>
+                            <span class="ft-ot">LANDBANK Account</span>
+                            <span class="ft-od">Send to another LANDBANK account</span>
+                            <svg class="ic ft-ochev" width="18" height="18">
+                                <use href="#i-right" />
+                            </svg>
+                        </button>
+                        <button type="button" class="ft-option" data-type="ob" aria-pressed="false">
+                            <span class="ft-oic"><svg class="ic" width="24" height="24">
+                                    <use href="#i-bank" />
+                                </svg></span>
+                            <span class="ft-ot">Other Bank</span>
+                            <span class="ft-od">Transfer to accounts in other banks (via InstaPay or PESONet)</span>
+                            <svg class="ic ft-ochev" width="18" height="18">
+                                <use href="#i-right" />
+                            </svg>
+                        </button>
+                        <button type="button" class="ft-option" data-type="qr" aria-pressed="false">
+                            <span class="ft-oic"><svg class="ic" width="24" height="24">
+                                    <use href="#i-qr" />
+                                </svg></span>
+                            <span class="ft-ot">QR Transfer</span>
+                            <span class="ft-od">Scan a QR code to send money instantly</span>
+                            <svg class="ic ft-ochev" width="18" height="18">
+                                <use href="#i-right" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="ft-layout">
+                        <!-- LEFT: transfer details card -->
+                        <section class="card ft-form-card">
+                            <ol class="ft-progress" aria-label="Progress">
+                                <li class="ft-step on" data-s="1"><span class="ft-num">1</span><span
+                                        class="ft-lbl">Transfer Details</span></li>
+                                <li class="ft-pline" aria-hidden="true"></li>
+                                <li class="ft-step" data-s="2"><span class="ft-num">2</span><span class="ft-lbl">Review
+                                        &amp; Confirm</span></li>
+                                <li class="ft-pline" aria-hidden="true"></li>
+                                <li class="ft-step" data-s="3"><span class="ft-num">3</span><span
+                                        class="ft-lbl">Complete</span></li>
+                            </ol>
+
+                            <!-- ===== LANDBANK ACCOUNT FORM ===== -->
+                            <form class="ft-form" id="ftLb" novalidate>
+                                <div class="ft-field">
+                                    <span class="ft-label">From Account</span>
+                                    <div class="ft-acctwrap">
+                                        <button type="button" class="ft-acct" aria-haspopup="listbox"
+                                            aria-expanded="false">
+                                            <span class="ft-aic"><svg class="ic" width="18" height="18">
+                                                    <use href="#i-card" />
+                                                </svg></span>
+                                            <span class="ft-atx"><b>LANDBANK Savings</b><small>Available Balance:
+                                                    ₱50,000.00</small></span>
+                                            <svg class="ic ft-achev" width="18" height="18">
+                                                <use href="#i-chevdown" />
+                                            </svg>
+                                        </button>
+                                        <div class="ft-menu" role="listbox" hidden>
+                                            <button type="button" class="ft-mi" role="option">
+                                                <span class="ft-atx"><b>LANDBANK Savings</b><small>Available Balance:
+                                                        ₱50,000.00</small></span>
+                                                <svg class="ic" width="16" height="16">
+                                                    <use href="#i-check" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="ft-field">
+                                    <label class="ft-label" for="lbAcct">Recipient Account Number <span
+                                            class="ft-req">*</span></label>
+                                    <div class="ft-input">
+                                        <span class="ft-pre"><svg class="ic" width="18" height="18">
+                                                <use href="#i-bank" />
+                                            </svg></span>
+                                        <input id="lbAcct" name="acct" type="text" inputmode="numeric" maxlength="12"
+                                            placeholder="Enter account number" autocomplete="off" />
+                                    </div>
+                                    <p class="ft-help">Enter the 10 or 12-digit account number.</p>
+                                    <p class="ft-err" hidden></p>
+                                </div>
+
+                                <div class="ft-field">
+                                    <label class="ft-label" for="lbAmt">Amount <span class="ft-req">*</span></label>
+                                    <div class="ft-input">
+                                        <span class="ft-pre">₱</span>
+                                        <input id="lbAmt" name="amount" type="text" inputmode="decimal"
+                                            placeholder="Enter amount" autocomplete="off" maxlength="15"
+                                            pattern="^\d+(\.\d{1,2})?$" />
+                                    </div>
+                                    <p class="ft-err" hidden></p>
+                                </div>
+
+                                <div class="ft-field">
+                                    <label class="ft-label" for="lbRem">Remarks <small>(Optional)</small></label>
+                                    <textarea class="ft-text" id="lbRem" name="remarks" maxlength="50"
+                                        placeholder="e.g. Savings, Rent, Personal Fund, etc."></textarea>
+                                    <div class="ft-count">0/50</div>
+                                </div>
+
+                                <button class="ft-btn" type="submit">Continue <svg class="ic" width="16" height="16">
+                                        <use href="#i-arrow" />
+                                    </svg></button>
+                            </form>
+
+                            <!-- ===== OTHER BANK FORM ===== -->
+                            <form class="ft-form" id="ftOb" novalidate hidden>
+                                <div class="ft-field">
+                                    <span class="ft-label">From Account</span>
+                                    <div class="ft-acctwrap">
+                                        <button type="button" class="ft-acct" aria-haspopup="listbox"
+                                            aria-expanded="false">
+                                            <span class="ft-aic"><svg class="ic" width="18" height="18">
+                                                    <use href="#i-card" />
+                                                </svg></span>
+                                            <span class="ft-atx"><b>LANDBANK Savings</b><small>Available Balance:
+                                                    ₱50,000.00</small></span>
+                                            <svg class="ic ft-achev" width="18" height="18">
+                                                <use href="#i-chevdown" />
+                                            </svg>
+                                        </button>
+                                        <div class="ft-menu" role="listbox" hidden>
+                                            <button type="button" class="ft-mi" role="option">
+                                                <span class="ft-atx"><b>LANDBANK Savings</b><small>Available Balance:
+                                                        ₱50,000.00</small></span>
+                                                <svg class="ic" width="16" height="16">
+                                                    <use href="#i-check" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="ft-field">
+                                    <label class="ft-label" for="obBank">Recipient Bank <span
+                                            class="ft-req">*</span></label>
+                                    <div class="ft-input ft-selwrap">
+                                        <select id="obBank" name="bank" required>
+                                            <option value="" selected disabled>Select bank</option>
+                                            <option>BDO</option>
+                                            <option>BPI</option>
+                                            <option>Metrobank</option>
+                                            <option>UnionBank</option>
+                                            <option>Security Bank</option>
+                                            <option>PNB</option>
+                                            <option>RCBC</option>
+                                            <option>China Bank</option>
+                                        </select>
+                                        <svg class="ic ft-selchev" width="16" height="16">
+                                            <use href="#i-chevdown" />
+                                        </svg>
+                                    </div>
+                                    <p class="ft-err" hidden></p>
+                                </div>
+
+                                <div class="ft-field">
+                                    <label class="ft-label" for="obAcct">Recipient Account Number <span
+                                            class="ft-req">*</span></label>
+                                    <div class="ft-input">
+                                        <span class="ft-pre"><svg class="ic" width="18" height="18">
+                                                <use href="#i-bank" />
+                                            </svg></span>
+                                        <input id="obAcct" name="acct" type="text" inputmode="numeric" maxlength="16"
+                                            placeholder="Enter account number" autocomplete="off" />
+                                    </div>
+                                    <p class="ft-err" hidden></p>
+                                </div>
+
+                                <div class="ft-field">
+                                    <label class="ft-label" for="obName">Account Name <span
+                                            class="ft-req">*</span></label>
+                                    <div class="ft-input">
+                                        <!-- CHANGE: added maxlength="60" (the validator itself is in the script below) -->
+                                        <input id="obName" name="name" type="text" maxlength="60"
+                                            placeholder="Enter recipient name" autocomplete="off" />
+                                    </div>
+                                    <p class="ft-err" hidden></p>
+                                </div>
+
+                                <div class="ft-field">
+                                    <label class="ft-label" for="obAmt">Amount <span class="ft-req">*</span></label>
+                                    <div class="ft-input">
+                                        <span class="ft-pre">₱</span>
+                                        <input id="obAmt" name="amount" type="text" inputmode="decimal"
+                                            placeholder="Enter amount" autocomplete="off" maxlength="15"
+                                            pattern="^\d+(\.\d{1,2})?$" />
+                                    </div>
+                                    <p class="ft-err" hidden></p>
+                                </div>
+
+                                <div class="ft-field">
+                                    <label class="ft-label" for="obRem">Remarks <small>(Optional)</small></label>
+                                    <textarea class="ft-text" id="obRem" name="remarks" maxlength="50"
+                                        placeholder="e.g. Savings, Rent, Personal Fund, etc."></textarea>
+                                    <div class="ft-count">0/50</div>
+                                </div>
+
+                                <button class="ft-btn" type="submit">Continue <svg class="ic" width="16" height="16">
+                                        <use href="#i-arrow" />
+                                    </svg></button>
+                            </form>
+
+                            <!-- ===== QR TRANSFER ===== -->
+                            <div class="ft-qr" id="ftQr" hidden>
+                                <h2 class="ft-h">QR Transfer</h2>
+                                <p class="ft-hs">Scan or upload a QR code to send money.</p>
+                                <div class="ft-qrdrop">
+                                    <span class="ft-qric"><svg class="ic" width="30" height="30">
+                                            <use href="#i-qr" />
+                                        </svg></span>
+                                    <p>Drop a QR code here<br />or upload an image to continue.</p>
+                                </div>
+                                <div class="ft-qrbtns">
+                                    <button type="button" class="ft-btn ft-auto" id="qrUpload"><svg class="ic"
+                                            width="16" height="16">
+                                            <use href="#i-upload" />
+                                        </svg>Upload QR</button>
+                                    <button type="button" class="ft-btn2" id="qrCamera"><svg class="ic" width="16"
+                                            height="16">
+                                            <use href="#i-camera" />
+                                        </svg>Use Camera</button>
+                                </div>
+                                <button type="button" class="ft-link" id="qrGenerate"><svg class="ic" width="15"
+                                        height="15">
+                                        <use href="#i-qr" />
+                                    </svg>Generate QR</button>
+                                <p class="ft-qrnote" id="qrNote" role="alert" aria-live="polite" hidden></p>
+                                <input type="file" id="qrFile" accept=".png,.jpg,.jpeg,image/png,image/jpeg" hidden />
+                            </div>
+
+                            <!-- ===== REVIEW ===== -->
+                            <div id="ftReview" hidden>
+                                <h2 class="ft-h">Transfer Summary</h2>
+                                <dl class="ft-summary" id="rvRows"></dl>
+                                <div class="ft-actions">
+                                    <button type="button" class="ft-btn2" id="rvBack">Back</button>
+                                    <button type="button" class="ft-btn ft-auto" id="rvConfirm">Confirm Transfer <svg
+                                            class="ic" width="16" height="16">
+                                            <use href="#i-arrow" />
+                                        </svg></button>
+                                </div>
+                            </div>
+
+                            <!-- ===== COMPLETE ===== -->
+                            <div class="ft-done" id="ftDone" hidden>
+                                <span class="ft-ok"><svg class="ic" width="30" height="30">
+                                        <use href="#i-check" />
+                                    </svg></span>
+                                <h2 class="ft-h">Transfer Successful</h2>
+                                <p class="ft-hs">Your transfer has been successfully submitted.</p>
+                                <dl class="ft-summary" id="dnRows"></dl>
+                                <div class="ft-actions ft-actions-wrap">
+                                    <button type="button" class="ft-btn ft-auto" id="dnReceipt"><svg class="ic"
+                                            width="16" height="16">
+                                            <use href="#i-download" />
+                                        </svg>Download Receipt</button>
+                                    <button type="button" class="ft-btn2" id="dnAnother">Make Another Transfer</button>
+                                    <button type="button" class="ft-btn2" id="dnBack">Back to Fund Transfer</button>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- RIGHT: important reminders -->
+                        <aside class="card ft-side">
+                            <div class="ft-remind">
+                                <div class="ft-rh">
+                                    <svg class="ic" width="20" height="20">
+                                        <use href="#i-bulb" />
+                                    </svg>
+                                    <span>Important Reminders</span>
+                                </div>
+                                <ul>
+                                    <li>Make sure the account number and transfer details are correct before confirming
+                                        the transfer.</li>
+                                    <li>Transfers to other banks may take longer depending on the receiving bank.</li>
+                                    <li>Fees may apply to transfers to other banks depending on the selected transfer
+                                        method.</li>
+                                </ul>
+                            </div>
+
+                        </aside>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+      <script src="user-script.js?v=4" defer></script>
+</body>
+
+</html>

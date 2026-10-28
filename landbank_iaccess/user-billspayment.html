@@ -1,0 +1,258 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="images/landbank-logo-icon.png" />
+    <title>Bills Payment | LANDBANK iAccess</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      try {
+        if (localStorage.getItem("iAccessSidebarCollapsed") === "true" && window.matchMedia("(min-width: 901px)").matches) {
+          document.documentElement.classList.add("sidebar-collapsed-preload");
+        }
+      } catch (error) {
+        console.error("Unable to restore sidebar state.", error);
+      }
+    </script>
+    <link rel="stylesheet" href="user-style.css?v=4" />
+    </head>
+  <body>
+    <script>
+      try {
+        document.body.dataset.theme = localStorage.getItem("landbankThemeMode") === "dark" ? "dark" : "light";
+      } catch (error) {
+        document.body.dataset.theme = "light";
+        console.error("Unable to restore color theme.", error);
+      }
+    </script>
+    <!-- Icon sprite -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z M9 22V12h6v10" /></symbol>
+      <symbol id="i-history" viewBox="0 0 24 24"><path d="M4 7h16 M4 12h9 M4 17h16" /></symbol>
+      <symbol id="i-transfer" viewBox="0 0 24 24"><path d="M8 3L4 7l4 4 M4 7h16 M16 21l4-4-4-4 M20 17H4" /></symbol>
+      <symbol id="i-bank" viewBox="0 0 24 24"><path d="M3 22h18 M6 18v-7 M10 18v-7 M14 18v-7 M18 18v-7 M12 2l8 5H4z" /></symbol>
+      <symbol id="i-card" viewBox="0 0 24 24"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z M2 10h20 M6 15h3" /></symbol>
+      <symbol id="i-settings" viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.76 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.24 9c.4.16.84.2 1.25.2H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" /></symbol>
+      <symbol id="i-support" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-9 9c0 1.6.4 3 1.2 4.3L3 21l4.7-1.2A9 9 0 1 0 12 3z M8.5 12h.01 M12 12h.01 M15.5 12h.01" /></symbol>
+      <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4 M16 17l5-5-5-5 M21 12H9" /></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><path d="M11 3a8 8 0 1 0 0 16 8 8 0 0 0 0-16z M21 21l-4.3-4.3" /></symbol>
+      <symbol id="i-bell" viewBox="0 0 20 20"><path d="M10 2a5 5 0 00-5 5v3.5l-1.5 2.5h13L15 10.5V7a5 5 0 00-5-5z M8 15a2 2 0 004 0" /></symbol>
+      <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5 M5 12l7-7 7 7" /></symbol>
+      <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14 M19 12l-7 7-7-7" /></symbol>
+      <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16 M4 12h16 M4 18h16" /></symbol>
+      <!-- Bills Payment icons -->
+      <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5 M12 19l-7-7 7-7" /></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14 M12 5l7 7-7 7" /></symbol>
+      <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z" /></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z M12 16v-4 M12 8h.01" /></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" /></symbol>
+      <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z" /></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" /></symbol>
+      <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0 M5 12.5a10 10 0 0 1 14 0 M8.5 16a5 5 0 0 1 7 0 M12 19.5h.01" /></symbol>
+      <symbol id="i-edu" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z M6 11.5V16c3 2.5 9 2.5 12 0v-4.5" /></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z M9 12l2 2 4-4" /></symbol>
+      <symbol id="i-coins" viewBox="0 0 24 24"><path d="M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3z M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6 M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6" /></symbol>
+      <symbol id="i-house" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8 M5 10v10h14V10 M10 20v-6h4v6" /></symbol>
+      <symbol id="i-dots" viewBox="0 0 24 24"><path d="M5 12h.01 M12 12h.01 M19 12h.01" style="stroke-width: 3" /></symbol>
+    </svg>
+
+    <div class="app">
+      <!-- Sidebar (same as dashboard; Bills Payment is active) -->
+      <aside class="side" id="side">
+        <div class="logo">
+          <svg width="66" height="66" viewBox="0 0 66 66" aria-hidden="true">
+            <circle cx="33" cy="33" r="30" fill="#fff" />
+            <path d="M33 10c8 7 12 15 8 24-2 5-5 8-8 12-3-4-6-7-8-12-4-9 0-17 8-24z" fill="#026D3D" />
+            <path d="M12 40c8-2 14 2 21 10M54 40c-8-2-14 2-21 10" stroke="#026D3D" stroke-width="3" fill="none" />
+            <path d="M33 26v26" stroke="#fff" stroke-width="2" />
+          </svg>
+          <div class="t"><b>LANDBANK</b><i>iAccess</i></div>
+        </div>
+
+        <nav class="nav">
+          <a href="user-dashboard.html" class="ni"><svg class="ic" width="24" height="24"><use href="#i-home" /></svg>Dashboard</a>
+          <a href="user-transactionhistory.html" class="ni"><svg class="ic" width="24" height="24"><use href="#i-history" /></svg>Transaction History</a>
+          <a href="user-fundtransfer.html" class="ni"><svg class="ic" width="24" height="24"><use href="#i-transfer" /></svg>Transfer Funds</a>
+          <a href="user-billspayment.html" class="ni on"><svg class="ic" width="24" height="24"><use href="#i-card" /></svg>Bills Payment</a>
+          <a href="user-settings.html" class="ni"><svg class="ic" width="24" height="24"><use href="#i-settings" /></svg>Settings</a>
+          <a href="user-support.html" class="ni"><svg class="ic" width="24" height="24"><use href="#i-support" /></svg>Customer support</a>
+        </nav>
+
+        <div class="sp"></div>
+
+        <div class="bot">
+        </div>
+      </aside>
+
+      <div class="main">
+        <!-- Top header (same as dashboard) -->
+        <header class="hd">
+          <button class="mb" id="menuBtn" aria-label="Menu">
+            <svg class="ic" width="24" height="24"><use href="#i-menu" /></svg>
+          </button>
+          <div class="hr">
+            <div class="nw">
+              <button class="bell" id="bell" aria-label="Notifications" aria-expanded="false" aria-haspopup="true">
+                <svg class="ic" width="24" height="24"><use href="#i-bell" /></svg><span class="notification-badge" aria-hidden="true">2</span>
+              </button>
+              <div class="np" id="np" role="dialog" aria-label="Notifications">
+                <div class="np-h"><b>Notifications</b><button id="markAll">Mark all as read</button></div>
+                <div class="np-list">
+                  <button class="np-item unread">
+                    <span class="c"><svg class="ic" width="20" height="20"><use href="#i-down" /></svg></span>
+                    <span><p>Money received</p><small>+ ₱20,000.00 from Tuition Allowance · 25 Jan, 12:30 AM</small></span>
+                  </button>
+                  <button class="np-item unread">
+                    <span class="c"><svg class="ic" width="20" height="20"><use href="#i-card" /></svg></span>
+                    <span><p>Subscription payment</p><small>Spotify Subscription – ₱50.00 was charged · 28 Jan, 12:30 AM</small></span>
+                  </button>
+                  <button class="np-item">
+                    <span class="c"><svg class="ic" width="20" height="20"><use href="#i-up" /></svg></span>
+                    <span><p>Load Service</p><small>₱200.00 was deducted from your card · 22 Jan, 12:30 AM</small></span>
+                  </button>
+                  <button class="np-item">
+                    <span class="c"><svg class="ic" width="20" height="20"><use href="#i-up" /></svg></span>
+                    <span><p>Netflix Subscription</p><small>₱560.00 was deducted from your card · 20 Jan, 12:30 AM</small></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <span class="vd"></span>
+            <div class="profile-menu-wrap">
+              <button class="pf" id="profileMenuBtn" type="button" aria-haspopup="menu" aria-expanded="false">
+                <span class="av" aria-hidden="true">JD</span>
+                <span class="profile-name"><b>Juan De La Cruz</b><small>09********38</small></span>
+                <svg class="profile-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg>
+              </button>
+              <div class="profile-menu" id="profileMenu" role="menu" hidden>
+                <a href="user-settings.html" role="menuitem">My Profile</a>
+                <a class="profile-signout" href="homepage.html" role="menuitem">Sign out</a>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Content -->
+        <main class="ct bp-ct">
+          <section class="bills-page">
+            <div class="bp-header">
+              <div>
+                <h1 class="bp-title">Pay a Bill</h1>
+                <p class="bp-subtitle"><span id="bpStepText">Step 1 of 3</span> <span id="bpStepDesc">Select a biller and enter the required details.</span></p>
+              </div>
+            </div>
+
+            <ol class="bp-steps" aria-label="Progress">
+              <li class="bp-step on" data-s="1"><span class="bp-num">1</span><span class="bp-lbl">Select Biller</span></li>
+              <li class="bp-line" aria-hidden="true"></li>
+              <li class="bp-step" data-s="2"><span class="bp-num">2</span><span class="bp-lbl">Payment Details</span></li>
+              <li class="bp-line" aria-hidden="true"></li>
+              <li class="bp-step" data-s="3"><span class="bp-num">3</span><span class="bp-lbl">Review &amp; Confirm</span></li>
+            </ol>
+
+            <!-- STEP 1 -->
+            <div class="bp-layout" id="bpStep1">
+              <section class="card bp-biller-card">
+                <h2 class="bp-h2">Select Biller</h2>
+                <label class="bp-search">
+                  <svg class="ic" width="16" height="16"><use href="#i-search" /></svg>
+                  <input id="bpSearch" type="text" placeholder="Search biller (e.g. Meralco, PLDT, Globe...)" autocomplete="off" />
+                </label>
+
+                <div class="bp-sec-head">
+                  <h3 class="bp-h3">Popular Billers</h3>
+                  <div class="bp-tabs">
+                    <button class="bp-tab on" data-f="all" type="button">All</button>
+                    <button class="bp-tab" data-f="fav" type="button">
+                      <svg class="ic" width="13" height="13"><use href="#i-star" /></svg>Favorites
+                    </button>
+                  </div>
+                </div>
+                <div class="bp-biller-grid" id="bpBillers"></div>
+
+                <h3 class="bp-h3 bp-h3-cat">Or select from categories</h3>
+                <div class="bp-category-grid" id="bpCats"></div>
+              </section>
+
+              <aside class="card bp-selected-card">
+                <div class="bp-sel-head">
+                  <h2 class="bp-h2-sm">Selected Biller</h2>
+                  <button class="bp-change" id="bpChange" type="button">
+                    <svg class="ic" width="13" height="13"><use href="#i-back" /></svg>Change
+                  </button>
+                </div>
+                <div class="bp-selected" id="bpSelected"></div>
+
+                <label class="bp-label" for="bpAcct">Account / Reference Number <span class="bp-req">*</span></label>
+                <input class="bp-input" id="bpAcct" type="text" maxlength="26" placeholder="Enter account or reference number" autocomplete="off" />
+
+                <label class="bp-label" for="bpNick">Nickname <small>(Optional)</small></label>
+                <input class="bp-input" id="bpNick" type="text" placeholder="e.g. Home Electricity" autocomplete="off" />
+
+                <p class="bp-error" id="bpError" role="alert" hidden></p>
+
+                <div class="bp-info">
+                  <svg class="ic" width="18" height="18"><use href="#i-info" /></svg>
+                  <span>You can save this biller for faster payments in the future.</span>
+                </div>
+
+                <button class="bp-continue" id="bpContinue" type="button">
+                  Continue <svg class="ic" width="16" height="16"><use href="#i-arrow" /></svg>
+                </button>
+              </aside>
+            </div>
+
+            <!-- STEP 2 -->
+            <section class="card bp-panel" id="bpStep2" hidden>
+              <h2 class="bp-h2">Payment Details</h2>
+              <dl class="bp-summary">
+                <div><dt>Biller</dt><dd id="d2Biller"></dd></div>
+                <div><dt>Account / Reference Number</dt><dd id="d2Acct"></dd></div>
+                <div><dt>Nickname</dt><dd id="d2Nick"></dd></div>
+              </dl>
+              <label class="bp-label" for="bpAmount">Amount</label>
+              <input class="bp-input" id="bpAmount" type="text" inputmode="decimal" placeholder="₱0.00" autocomplete="off" />
+              <!-- CHANGE: shows the minimum payment for the selected biller -->
+              <p id="bpMinNote" style="margin: 6px 0 0; font-size: 0.8rem; color: #7d8481"></p>
+              <p class="bp-error" id="bpError2" role="alert" hidden></p>
+              <div class="bp-actions">
+                <button class="bp-btn-ghost" id="bpBack2" type="button">Back</button>
+                <button class="bp-continue bp-auto" id="bpNext2" type="button">
+                  Continue <svg class="ic" width="16" height="16"><use href="#i-arrow" /></svg>
+                </button>
+              </div>
+            </section>
+
+            <!-- STEP 3 -->
+            <section class="card bp-panel" id="bpStep3" hidden>
+              <h2 class="bp-h2">Review &amp; Confirm</h2>
+              <dl class="bp-summary">
+                <div><dt>Biller</dt><dd id="d3Biller"></dd></div>
+                <div><dt>Account / Reference Number</dt><dd id="d3Acct"></dd></div>
+                <div><dt>Nickname</dt><dd id="d3Nick"></dd></div>
+                <div><dt>Amount</dt><dd id="d3Amt"></dd></div>
+                <div><dt>Source Account</dt><dd>Juan De La Cruz · 09********38<br><small>Available Balance: <span id="bpAvailableBalance">₱50,000</span></small></dd></div>
+              </dl>
+              <div class="bp-actions">
+                <button class="bp-btn-ghost" id="bpBack3" type="button">Back</button>
+                <button class="bp-continue bp-auto" id="bpConfirm" type="button">
+                  Confirm Payment <svg class="ic" width="16" height="16"><use href="#i-check" /></svg>
+                </button>
+              </div>
+            </section>
+          </section>
+        </main>
+      </div>
+    </div>
+
+      <script src="user-script.js?v=4" defer></script>
+</body>
+</html>
